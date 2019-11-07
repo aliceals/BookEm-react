@@ -10,12 +10,12 @@ class HomePage extends React.Component {
             name: "Alice",
             city: 'Porirua',
             days: [{ date: '8th November', temp: 20, icon: '/images/cloudy.png' },
-            { date: '9th November', temp: 22, icon: 'sun' },
-            { date: '10th November', temp: 18, icon: 'rain' },
-            { date: '11th November', temp: 24, icon: 'clear' },
-            { date: '12th November', temp: 16, icon: 'rain' },
-            { date: '13th November', temp: 20, icon: 'sun' },
-            { date: '14th November', temp: 20, icon: 'clear' }],
+            { date: '9th November', temp: 22, icon: '/images/clear-day.png' },
+            { date: '10th November', temp: 18, icon: '/images/windy.png' },
+            { date: '11th November', temp: 24, icon: '/images/clear-day.png' },
+            { date: '12th November', temp: 16, icon: '/images/windy.png' },
+            { date: '13th November', temp: 20, icon: '/images/clear-day.png' },
+            { date: '14th November', temp: 20, icon: '/images/windy.png' }],
             currentPendingBooking: null
         }
 
@@ -37,8 +37,8 @@ class HomePage extends React.Component {
             < React.Fragment >
                 <h1>BookEm</h1>
 
-                <h2>Hi {this.state.name}</h2>
-                <h2>From {this.state.city}</h2>
+                <h4>Hi {this.state.name}</h4>
+                <h5>From {this.state.city}</h5>
                 <table className="table table-bordered table-hover">
                     <thead>
                         <tr className="table-primary">
@@ -51,7 +51,7 @@ class HomePage extends React.Component {
                     <tbody>
                         <tr className="table-primary">
                             {daysArray.map((days) => {
-                                return <td>{days.temp} <br></br> <img src={days.icon} /></td>
+                                return <td>{days.temp}°C <br></br> <img src={days.icon} /></td>
                             })}
                         </tr>
                         <tr className="table-primary">
