@@ -9,19 +9,13 @@ import BookingsPage from './BookingsPage'
 class App extends React.Component {
   render() {
     return (
-
-      <div>
-        <h1>This is the bookem page</h1>
-        <NavBar />
-        <HomePage />
-        <BookPage />
-        <BookingsPage />
-      </div>
-
-
+      <Router>
+        <Route exact path="/" component={HomePage} />
+      </Router>
     )
   }
 }
 
 
 export default App
+
