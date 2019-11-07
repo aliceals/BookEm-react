@@ -1,11 +1,29 @@
 import React from 'react'
 
-const BookPage = (props) => {
-    return (
-        <React.Fragment>
-            <p>This is the book page</p>
-        </React.Fragment>
-    )
+class BookPage extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            date: this.props.day
+        }
+
+        console.log(this.state.date)
+    }
+
+    render() {
+        return (
+            <React.Fragment >
+                <p>This is the book page</p>
+                <form>
+                    <label>Date:
+                        <input type="text" name="day" value={this.state.date} />
+                    </label>
+                </form>
+
+            </React.Fragment >
+        )
+    }
 }
 
 export default BookPage

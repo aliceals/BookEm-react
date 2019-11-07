@@ -1,4 +1,5 @@
 import React from 'react'
+import Book from './BookPage'
 
 
 class HomePage extends React.Component {
@@ -17,11 +18,21 @@ class HomePage extends React.Component {
             { date: '14th November', temp: 20, icon: 'clear' }],
             currentPendingBooking: null
         }
+
+        this.changePendingBooking = this.changePendingBooking.bind(this)
+    }
+
+    changePendingBooking(event) {
+        let day = event.target.value
+        this.setState({
+            currentPendingBooking: day
+        })
     }
 
     render() {
 
         let daysArray = this.state.days
+
         return (
             < React.Fragment >
                 <h1>BookEm</h1>
@@ -43,15 +54,14 @@ class HomePage extends React.Component {
                                 return <td>{days.temp} and {days.icon}</td>
                             })}
                         </tr>
+                        <tr className="table-primary">
+                            {daysArray.map((days) => {
+                                return <td><button onClick={this.changePendingBooking} value={days.date}>Book</button></td>
+                            })}
+                        </tr>
                     </tbody>
                 </table>
-
-
-
-
-
-
-
+                {this.state.currentPendingBooking ? <Book day={this.state.currentPendingBooking} /> : null}
             </React.Fragment >
         )
     }
@@ -60,5 +70,5 @@ class HomePage extends React.Component {
 export default HomePage
 
 
-
+    // < button name = "day" value = "{{dates.tomorrow}}" > Book</button >
 
