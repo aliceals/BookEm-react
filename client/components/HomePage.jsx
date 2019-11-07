@@ -1,6 +1,6 @@
 import React from 'react'
 import Book from './BookPage'
-
+import { Link } from 'react-router-dom'
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class HomePage extends React.Component {
         this.state = {
             name: "Alice",
             city: 'Porirua',
-            days: [{ date: '8th November', temp: 20, icon: 'sun' },
+            days: [{ date: '8th November', temp: 20, icon: '/images/cloudy.png' },
             { date: '9th November', temp: 22, icon: 'sun' },
             { date: '10th November', temp: 18, icon: 'rain' },
             { date: '11th November', temp: 24, icon: 'clear' },
@@ -51,7 +51,7 @@ class HomePage extends React.Component {
                     <tbody>
                         <tr className="table-primary">
                             {daysArray.map((days) => {
-                                return <td>{days.temp} and {days.icon}</td>
+                                return <td>{days.temp} <br></br> <img src={days.icon} /></td>
                             })}
                         </tr>
                         <tr className="table-primary">
