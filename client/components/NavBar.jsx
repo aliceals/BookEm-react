@@ -14,13 +14,13 @@ class NavBar extends React.Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item active">
-                                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                                < Link className="nav-link" to="/" > Home</Link >
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Book</a>
+                                < Link className="nav-link" to="/book" > Book</Link >
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Upcoming Bookings</a>
+                                < Link className="nav-link" to="/book" > Upcoming Bookings</Link >
                             </li>
                         </ul>
 
@@ -35,8 +35,4 @@ class NavBar extends React.Component {
 export default NavBar
 
 
-
-    // < Link to = "/" > Home</Link >
-    //     <Link to="/book">Book</Link>
-    //     <Link to="/booking">Upcoming Bookings</Link>
 
