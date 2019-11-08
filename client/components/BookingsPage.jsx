@@ -33,10 +33,10 @@ class BookingsPage extends React.Component {
 
         return (
             <React.Fragment>
-                <p>These are your upcoming bookings</p>
+                <h3>These are your upcoming bookings</h3>
                 <ul>
                     {bookingArray.map((booking) => {
-                        return <li>Date: {booking.date}<br /> Time: {booking.time}<br /> Details:{booking.service}<br />
+                        return <li>Date: {booking.date}<br /> Time: {booking.time}<br /> Details: {booking.service}<br /><br />
                             <button>Cancel</button><br /><hr /></li>
                     })}
                 </ul>
