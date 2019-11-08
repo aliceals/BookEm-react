@@ -7,8 +7,6 @@ class BookPage extends React.Component {
         this.state = {
             date: this.props.day
         }
-
-        console.log(this.state.date)
     }
 
     render() {

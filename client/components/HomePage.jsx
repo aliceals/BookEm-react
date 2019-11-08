@@ -36,9 +36,9 @@ class HomePage extends React.Component {
         return (
             < React.Fragment >
                 <h1>BookEm</h1>
-
                 <h4>Hi {this.state.name}</h4>
                 <h5>From {this.state.city}</h5>
+                <h6>Weather for the upcoming week:</h6>
                 <table className="table table-bordered table-hover">
                     <thead>
                         <tr className="table-primary">
@@ -70,5 +70,4 @@ class HomePage extends React.Component {
 export default HomePage
 
 
-    // < button name = "day" value = "{{dates.tomorrow}}" > Book</button >
 
