@@ -1,11 +1,49 @@
 import React from 'react'
 
-const BookingsPage = (props) => {
-    return (
-        <React.Fragment>
-            <p>This is the Bookings page</p>
-        </React.Fragment>
-    )
+class BookingsPage extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            booking:
+                [{
+                    date: "10th November",
+                    time: "10:00am",
+                    service: "Lawn Mowing",
+                    cancel: false
+                },
+                {
+                    date: "11th November",
+                    time: "11:00am",
+                    service: "Weeding",
+                    cancel: false
+                },
+
+                {
+                    date: "12th November",
+                    time: "10:00am",
+                    service: "Retaining Wall",
+                    cancel: false
+                }]
+        }
+    }
+    render() {
+
+        let bookingArray = this.state.booking
+
+        return (
+            <React.Fragment>
+                <p>These are your upcoming bookings</p>
+                <ul>
+                    {bookingArray.map((booking) => {
+                        return <li>Date: {booking.date}<br /> Time: {booking.time}<br /> Details:{booking.service}<br />
+                            <button>Cancel</button><br /><hr /></li>
+                    })}
+                </ul>
+
+            </React.Fragment >
+        )
+    }
 }
 
 export default BookingsPage

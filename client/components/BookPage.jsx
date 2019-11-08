@@ -14,7 +14,6 @@ class BookPage extends React.Component {
     render() {
         return (
             <React.Fragment >
-                <p>This is the book page</p>
                 <form>
                     <label>Date:
                         <input type="text" name="day" value={this.state.date} />
