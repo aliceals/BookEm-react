@@ -28,6 +28,19 @@ class BookingsPage extends React.Component {
     }
 
     componentDidMount() {
+        this.refreshData()
+    }
+
+    deleteBooking(id) {
+        fetch("API/bookings/id",
+            {
+                method: "DELETE",
+            }).then(() => {
+                this.refreshData()
+            })
+    }
+
+    refreshData() {
         fetch("/API/bookings")
             .then(response => response.json())
             .then(json => {
@@ -47,7 +60,7 @@ class BookingsPage extends React.Component {
                 <ul>
                     {bookingArray.map((booking) => {
                         return <li>Date: {booking.date}<br /> Time: {booking.time}<br /> Details: {booking.service}<br /><br />
-                            <button>Cancel</button><br /><hr /></li>
+                            <button onClick={this.deleteBooking(booking.id)}>Cancel</button><br /><hr /></li>
                     })}
                 </ul>
 

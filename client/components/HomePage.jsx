@@ -8,14 +8,7 @@ class HomePage extends React.Component {
         super(props)
 
         this.state = {
-
-            days: [{ date: moment().add(1, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/cloudy.png' },
-            { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), temp: 22, icon: '/images/clear-day.png' },
-            { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), temp: 18, icon: '/images/windy.png' },
-            { date: moment().add(4, 'days').format('dddd MMM Do YYYY'), temp: 24, icon: '/images/clear-day.png' },
-            { date: moment().add(5, 'days').format('dddd MMM Do YYYY'), temp: 16, icon: '/images/windy.png' },
-            { date: moment().add(6, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/clear-day.png' },
-            { date: moment().add(7, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/windy.png' }],
+            days: [],
             currentPendingBooking: null
         }
 
@@ -28,13 +21,28 @@ class HomePage extends React.Component {
         fetch("/API/user")
             .then(response => response.json())
             .then(json => {
+                console.log(json)
                 this.setState({
                     name: json.name,
                     city: json.city
                 })
             })
-    }
 
+        fetch("/API/weather")
+            .then(response => response.json())
+            .then(json => {
+                console.log("banana")
+                this.setState({
+                    days: [{ date: moment().add(2, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/' + json.icon + '.png' },
+                    { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), temp: 22, icon: '/images/clear-day.png' },
+                    { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), temp: 18, icon: '/images/windy.png' },
+                    { date: moment().add(4, 'days').format('dddd MMM Do YYYY'), temp: 24, icon: '/images/clear-day.png' },
+                    { date: moment().add(5, 'days').format('dddd MMM Do YYYY'), temp: 16, icon: '/images/windy.png' },
+                    { date: moment().add(6, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/clear-day.png' },
+                    { date: moment().add(7, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/windy.png' }]
+                })
+            })
+    }
 
 
     changePendingBooking(event) {
