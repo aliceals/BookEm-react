@@ -18,7 +18,6 @@ class BookingsPage extends React.Component {
                     service: "Weeding",
                     cancel: false
                 },
-
                 {
                     date: "12th November",
                     time: "10:00am",
@@ -27,6 +26,17 @@ class BookingsPage extends React.Component {
                 }]
         }
     }
+
+    componentDidMount() {
+        fetch("/API/bookings")
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                    booking: json
+                })
+            })
+    }
+
     render() {
 
         let bookingArray = this.state.booking

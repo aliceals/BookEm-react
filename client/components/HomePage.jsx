@@ -1,5 +1,6 @@
 import React from 'react'
 import Book from './BookPage'
+import moment from 'moment'
 import { Link } from 'react-router-dom'
 
 class HomePage extends React.Component {
@@ -7,20 +8,34 @@ class HomePage extends React.Component {
         super(props)
 
         this.state = {
-            name: "Alice",
-            city: 'Porirua',
-            days: [{ date: '8th November', temp: 20, icon: '/images/cloudy.png' },
-            { date: '9th November', temp: 22, icon: '/images/clear-day.png' },
-            { date: '10th November', temp: 18, icon: '/images/windy.png' },
-            { date: '11th November', temp: 24, icon: '/images/clear-day.png' },
-            { date: '12th November', temp: 16, icon: '/images/windy.png' },
-            { date: '13th November', temp: 20, icon: '/images/clear-day.png' },
-            { date: '14th November', temp: 20, icon: '/images/windy.png' }],
+
+            days: [{ date: moment().add(1, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/cloudy.png' },
+            { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), temp: 22, icon: '/images/clear-day.png' },
+            { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), temp: 18, icon: '/images/windy.png' },
+            { date: moment().add(4, 'days').format('dddd MMM Do YYYY'), temp: 24, icon: '/images/clear-day.png' },
+            { date: moment().add(5, 'days').format('dddd MMM Do YYYY'), temp: 16, icon: '/images/windy.png' },
+            { date: moment().add(6, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/clear-day.png' },
+            { date: moment().add(7, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/windy.png' }],
             currentPendingBooking: null
         }
 
         this.changePendingBooking = this.changePendingBooking.bind(this)
+
     }
+
+
+    componentDidMount() {
+        fetch("/API/user")
+            .then(response => response.json())
+            .then(json => {
+                this.setState({
+                    name: json.name,
+                    city: json.city
+                })
+            })
+    }
+
+
 
     changePendingBooking(event) {
         let day = event.target.value
@@ -34,11 +49,12 @@ class HomePage extends React.Component {
         let daysArray = this.state.days
 
         return (
+
             < React.Fragment >
-                <h1>BookEm</h1>
-                <h4>Hi {this.state.name}</h4>
-                <h5>From {this.state.city}</h5>
-                <h6>Weather for the upcoming week:</h6>
+                <h1 className="title">BookEm</h1>
+                <h4 className="hi">Hi {this.state.name}</h4>
+                <h5 className="city">From {this.state.city}</h5>
+                <h6 className="weatherTitle">Weather for the upcoming week:</h6>
                 <table className="table table-bordered table-hover">
                     <thead>
                         <tr className="table-primary">
