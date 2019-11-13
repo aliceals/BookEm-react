@@ -69,7 +69,8 @@ server.get('/API/weather', (req, res) => {
     fetch(`https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si`)
         .then((res) => res.json())
         .then(json => {
-            res.send(json.daily.data[0])
+            console.log("json", json.daily.data)
+            res.send(json.daily)
         })
 })
 

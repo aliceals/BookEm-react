@@ -31,15 +31,18 @@ class HomePage extends React.Component {
         fetch("/API/weather")
             .then(response => response.json())
             .then(json => {
-                console.log("banana")
+                console.log(json)
+                console.log(Math.round(json.data[5].temperatureHigh))
                 this.setState({
-                    days: [{ date: moment().add(2, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/' + json.icon + '.png' },
-                    { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), temp: 22, icon: '/images/clear-day.png' },
-                    { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), temp: 18, icon: '/images/windy.png' },
-                    { date: moment().add(4, 'days').format('dddd MMM Do YYYY'), temp: 24, icon: '/images/clear-day.png' },
-                    { date: moment().add(5, 'days').format('dddd MMM Do YYYY'), temp: 16, icon: '/images/windy.png' },
-                    { date: moment().add(6, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/clear-day.png' },
-                    { date: moment().add(7, 'days').format('dddd MMM Do YYYY'), temp: 20, icon: '/images/windy.png' }]
+                    days: [{
+                        date: moment().add(2, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
+                    },
+                    { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[1].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[1].icon + '.png' },
+                    { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[2].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[2].icon + '.png' },
+                    { date: moment().add(4, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[3].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[3].icon + '.png' },
+                    { date: moment().add(5, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[4].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[4].icon + '.png' },
+                    { date: moment().add(6, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[5].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[5].icon + '.png' },
+                    { date: moment().add(7, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[6].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[6].icon + '.png' }]
                 })
             })
     }
@@ -75,7 +78,7 @@ class HomePage extends React.Component {
                     <tbody>
                         <tr className="table-primary">
                             {daysArray.map((days) => {
-                                return <td>{days.temp}°C <br></br> <img src={days.icon} /></td>
+                                return <td><img src={days.icon} /><br></br>{days.highTemp}°C <br></br> {days.lowTemp}°C </td>
                             })}
                         </tr>
                         <tr className="table-primary">
