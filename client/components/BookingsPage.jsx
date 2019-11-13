@@ -1,5 +1,5 @@
 import React from 'react'
-import { getBookings } from '../api'
+import { getBookings, deleteBooking } from '../api'
 
 class BookingsPage extends React.Component {
     constructor(props) {
@@ -9,20 +9,22 @@ class BookingsPage extends React.Component {
             booking: []
 
         }
+
+        this.deleteBooking = this.deleteBooking.bind(this)
     }
 
     componentDidMount() {
         this.refreshData()
     }
 
-    // deleteBooking(id) {
-    //     fetch("API/bookings/id",
-    //         {
-    //             method: "DELETE",
-    //         }).then(() => {
-    //             this.refreshData()
-    //         })
-    // }
+    deleteBooking(e) {
+        let bookingId = e.target.name
+        deleteBooking(bookingId)
+            .then(() => {
+                this.refreshData()
+            })
+
+    }
 
     refreshData() {
         getBookings()
@@ -42,7 +44,7 @@ class BookingsPage extends React.Component {
                 <ul>
                     {bookingArray.map((booking) => {
                         return <li>Date: {booking.bookingDate}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
-                            {/* <button onClick={this.deleteBooking(booking.id)}>Cancel</button><br /> */}
+                            <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><br />
                             <hr /></li>
                     })}
                 </ul>

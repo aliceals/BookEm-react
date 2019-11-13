@@ -38,16 +38,22 @@ server.get('/API/bookings', (req, res) => {
         })
 })
 
-server.delete('/API/bookings/:id', (req, res) => {
+server.delete('/API/bookings/', (req, res) => {
+    let id = req.body.bookingId
+    console.log("this is the id", id)
     //validate that the booking belongs to the user and check session
     db.deleteBooking(id)
+        .then((response) => {
+            res.json({ response: response })
+        })
 })
 
 
-server.get('/API/database', (req, res) => {
 
-    res.send({ banana: "banana" })
-})
+// server.get('/API/database', (req, res) => {
+
+//     res.send({ banana: "banana" })
+// })
 
 
 server.get('/API/weather', (req, res) => {

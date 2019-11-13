@@ -27,3 +27,14 @@ export function getBookings() {
     return request.get('/API/bookings')
         .then(response => response.body)
 }
+
+
+export function deleteBooking(id) {
+    let newid = { bookingId: id }
+    console.log(newid)
+    return request
+        .delete(`http://localhost:3000/API/bookings/`)
+        .send(newid)
+        .then(response => response.body)
+}
+

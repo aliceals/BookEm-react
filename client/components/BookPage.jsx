@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { addBooking } from '../api'
-import BookingsPage from './BookingsPage'
 
 class BookPage extends React.Component {
     constructor(props) {
