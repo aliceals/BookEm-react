@@ -2,6 +2,7 @@ import request from 'superagent'
 
 export function addBooking(booking) {
 
+
     let user_id = booking.user_id
     let job_id = booking.form.job_id
     let bookingDate = booking.bookingDate
@@ -14,10 +15,15 @@ export function addBooking(booking) {
         bookingTime: bookingTime
     }
 
-    console.log(bookingDetails)
 
     return request.post('/API/bookings')
         .send(bookingDetails)
         .then(response => response.body)
 }
 
+
+
+export function getBookings() {
+    return request.get('/API/bookings')
+        .then(response => response.body)
+}

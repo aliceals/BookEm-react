@@ -30,28 +30,12 @@ server.get('/API/user', (req, res) => {
 })
 
 server.get('/API/bookings', (req, res) => {
-    res.send([{
-        id: 1,
-        date: "10th November",
-        time: "10:00am",
-        service: "Lawn Mowing"
-    }, {
-        id: 2,
-        date: "11th November",
-        time: "10:00am",
-        service: "Lawn Mowing"
-    }, {
-        id: 3,
-        date: "12th November",
-        time: "10:00am",
-        service: "Lawn Mowing"
-    }, {
-        id: 4,
-        date: "19th November",
-        time: "19:00am",
-        service: "Weeding"
-    }]
-    )
+    db.getBookings(1)
+        .then(bookings => {
+            res.send(bookings)
+        }).catch(err => {
+            res.status(500).send(err.message)
+        })
 })
 
 server.delete('/API/bookings/:id', (req, res) => {
