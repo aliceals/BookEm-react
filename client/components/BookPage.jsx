@@ -1,5 +1,7 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import { addBooking } from '../api'
+import BookingsPage from './BookingsPage'
 
 class BookPage extends React.Component {
     constructor(props) {
@@ -8,7 +10,8 @@ class BookPage extends React.Component {
         this.state = {
             bookingDate: this.props.day,
             user_id: 1,
-            form: {}
+            form: {},
+            redirectToBookings: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,8 +28,12 @@ class BookPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        console.log("this state bookpage", this.state)
         addBooking(this.state)
+        this.setState({
+            redirectToBookings: true
+        })
+        console.log(this.state)
+
     }
 
 
@@ -62,9 +69,9 @@ class BookPage extends React.Component {
                     </select>
                     </label>
                     <br />
-                    <button type="submit" value={this.state} onClick={this.handleSubmit}>Book</button>
+                    <button type="submit" value={this.state} onClick={this.handleSubmit} >Book</button>
                 </form>
-
+                {this.state.redirectToBookings ? <Redirect to="/bookings" /> : console.log("nope")}
             </React.Fragment >
         )
     }
