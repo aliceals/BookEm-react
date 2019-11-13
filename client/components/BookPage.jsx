@@ -1,11 +1,13 @@
 import React from 'react'
+import { addBooking } from '../api'
 
 class BookPage extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            date: this.props.day,
+            bookingDate: this.props.day,
+            user_id: 1,
             form: {}
         }
         this.handleChange = this.handleChange.bind(this)
@@ -23,7 +25,7 @@ class BookPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        console.log(this.state)
+        console.log("this state bookpage", this.state)
         addBooking(this.state)
     }
 
@@ -47,14 +49,14 @@ class BookPage extends React.Component {
                 <h3>Fill in booking details below</h3>
                 <form>
                     <label>Date:
-                        <input type="text" name="day" value={this.state.date} onChange={this.handleChange} required />
+                        <input type="text" name="day" value={this.state.bookingDate} onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>Time:
-                        <input type="time" name="time" onChange={this.handleChange} required />
+                        <input type="time" name="bookingTime" onChange={this.handleChange} required />
                     </label>
                     <br />
-                    <label>Book:<select name="service" id="jobId" onChange={this.handleChange}>
+                    <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
                         <option value="1111" name="">Lawn mowing</option>
                         <option value="1112" name="">Weeding</option>
                         <option value="1113" name="">Lawn mowing and weeding</option>

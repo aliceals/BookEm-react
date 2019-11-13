@@ -20,7 +20,6 @@ class HomePage extends React.Component {
         fetch("/API/user")
             .then(response => response.json())
             .then(json => {
-                console.log(json)
                 this.setState({
                     name: json.name,
                     city: json.city

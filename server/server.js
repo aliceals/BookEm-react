@@ -6,6 +6,7 @@ const db = require('./db.js')
 const server = express()
 
 server.use(express.static(path.join(__dirname, '../public')))
+server.use(express.json())
 
 server.get('/API/services', (req, res) => {
     res.send({
@@ -69,10 +70,31 @@ server.get('/API/weather', (req, res) => {
     fetch(`https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si`)
         .then((res) => res.json())
         .then(json => {
-            console.log("json", json.daily.data)
             res.send(json.daily)
         })
 })
+
+server.post('/API/bookings', (req, res) => {
+    let booking = req.body
+    console.log(booking)
+    db.addBooking(1, booking)
+        .then(data => {
+            console.log(data)
+        })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // server.get('/API/user', (req, res) => {
