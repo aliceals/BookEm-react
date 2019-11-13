@@ -1,7 +1,6 @@
 import React from 'react'
 import Book from './BookPage'
 import moment from 'moment'
-import { Link } from 'react-router-dom'
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -31,11 +30,9 @@ class HomePage extends React.Component {
         fetch("/API/weather")
             .then(response => response.json())
             .then(json => {
-                console.log(json)
-                console.log(Math.round(json.data[5].temperatureHigh))
                 this.setState({
                     days: [{
-                        date: moment().add(2, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
+                        date: moment().add(1, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
                     },
                     { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[1].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[1].icon + '.png' },
                     { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[2].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[2].icon + '.png' },

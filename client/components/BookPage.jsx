@@ -5,9 +5,38 @@ class BookPage extends React.Component {
         super(props)
 
         this.state = {
-            date: this.props.day
+            date: this.props.day,
+            form: {}
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+
+    handleChange(e) {
+        let form = this.state.form
+        form[e.target.name] = e.target.value
+        this.setState({
+            form: form
+        })
+    }
+
+    handleSubmit(e) {
+        e.preventDefault()
+        console.log(this.state)
+        addBooking(this.state)
+    }
+
+
+
+    changePendingBooking(event) {
+        let day = event.target.value
+        this.setState({
+            currentPendingBooking: day
+        })
+    }
+
+
 
 
 
@@ -18,14 +47,14 @@ class BookPage extends React.Component {
                 <h3>Fill in booking details below</h3>
                 <form>
                     <label>Date:
-                        <input type="text" name="bookingDay" value={this.state.date} required />
+                        <input type="text" name="day" value={this.state.date} onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>Time:
-                        <input type="time" name="bookingTime" required />
+                        <input type="time" name="time" onChange={this.handleChange} required />
                     </label>
                     <br />
-                    <label>Book:<select name="job_id" id="jobId" >
+                    <label>Book:<select name="service" id="jobId" onChange={this.handleChange}>
                         <option value="1111" name="">Lawn mowing</option>
                         <option value="1112" name="">Weeding</option>
                         <option value="1113" name="">Lawn mowing and weeding</option>
@@ -34,7 +63,7 @@ class BookPage extends React.Component {
                     </select>
                     </label>
                     <br />
-                    <button>Book</button>
+                    <button type="submit" value={this.state} onClick={this.handleSubmit}>Book</button>
                 </form>
 
             </React.Fragment >
