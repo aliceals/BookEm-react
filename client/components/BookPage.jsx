@@ -14,6 +14,8 @@ class BookPage extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.dateChange = this.dateChange.bind(this)
+        this.handleDateChange = this.handleDateChange.bind(this)
     }
 
 
@@ -35,7 +37,13 @@ class BookPage extends React.Component {
 
     }
 
-
+    handleDateChange(e) {
+        console.log(e.target.value)
+        let date = e.target.value
+        this.setState({
+            bookingDate: date
+        })
+    }
 
     changePendingBooking(event) {
         let day = event.target.value
@@ -43,6 +51,14 @@ class BookPage extends React.Component {
             currentPendingBooking: day
         })
     }
+
+    dateChange(e) {
+        e.target.value = ""
+    }
+
+
+
+
 
 
 
@@ -52,7 +68,7 @@ class BookPage extends React.Component {
                 <h3>Fill in booking details below</h3>
                 <form>
                     <label>Date:
-                        <input type="text" name="day" value={this.state.bookingDate} onChange={this.handleChange} required />
+                        <input type="text" name="day" value={this.state.bookingDate} onClick={this.dateChange} onChange={this.handleDateChange} required />
                     </label>
                     <br />
                     <label>Time:

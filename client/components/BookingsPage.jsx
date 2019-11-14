@@ -36,7 +36,6 @@ class BookingsPage extends React.Component {
     render() {
 
         let bookingArray = this.state.booking
-        console.log("bookingArray", this.state.booking)
 
         return (
             <React.Fragment>

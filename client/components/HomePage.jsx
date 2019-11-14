@@ -74,7 +74,7 @@ class HomePage extends React.Component {
                     <tbody>
                         <tr className="table-primary">
                             {daysArray.map((days) => {
-                                return <td><img src={days.icon} /><br></br>{days.highTemp}°C <br></br> {days.lowTemp}°C </td>
+                                return <td><img src={days.icon} /><br></br>High: {days.highTemp}°C <br></br>Low: {days.lowTemp}°C </td>
                             })}
                         </tr>
                         <tr className="table-primary">
