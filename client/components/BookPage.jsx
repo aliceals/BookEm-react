@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { addBooking } from '../api'
+import { addBooking, getServiceList } from '../api'
 
 class BookPage extends React.Component {
     constructor(props) {
@@ -10,12 +10,18 @@ class BookPage extends React.Component {
             bookingDate: this.props.day,
             user_id: 1,
             form: {},
-            redirectToBookings: false
+            redirectToBookings: false,
+            services: []
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.dateChange = this.dateChange.bind(this)
         this.handleDateChange = this.handleDateChange.bind(this)
+        this.getServices = this.getServices.bind(this)
+    }
+
+    componentDidMount() {
+        this.getServices()
     }
 
 
@@ -56,13 +62,21 @@ class BookPage extends React.Component {
         e.target.value = ""
     }
 
-
-
-
+    getServices() {
+        getServiceList()
+            .then(services => {
+                this.setState({
+                    services: services
+                })
+                console.log(this.state.services)
+            })
+    }
 
 
 
     render() {
+        let servicesArray = this.state.services
+
         return (
             <React.Fragment >
                 <h3>Fill in booking details below</h3>
@@ -76,11 +90,9 @@ class BookPage extends React.Component {
                     </label>
                     <br />
                     <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
-                        <option value="1111" name="">Lawn mowing</option>
-                        <option value="1112" name="">Weeding</option>
-                        <option value="1113" name="">Lawn mowing and weeding</option>
-                        <option value="1114" name="">Planting</option>
-                        <option value="1115" name="">Retaining wall</option>
+                        {servicesArray.map((service) => {
+                            return <option value={service.servicesId}>{service.servicesDescription}</option>
+                        })}
                     </select>
                     </label>
                     <br />

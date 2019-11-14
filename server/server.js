@@ -9,18 +9,10 @@ server.use(express.static(path.join(__dirname, '../public')))
 server.use(express.json())
 
 server.get('/API/services', (req, res) => {
-    res.send({
-        services: [{
-            name: "lawnmowing",
-            fee: "$40"
-        }, {
-            name: "weeding",
-            fee: "$50"
-        }, {
-            name: "retaining wall",
-            fee: "$140"
-        }]
-    })
+    db.getServices()
+        .then(services => {
+            res.send(services)
+        })
 })
 
 server.get('/API/user', (req, res) => {

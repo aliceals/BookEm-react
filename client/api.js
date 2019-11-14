@@ -38,3 +38,8 @@ export function deleteBooking(id) {
         .then(response => response.body)
 }
 
+export function getServiceList() {
+    return request
+        .get('/API/services')
+        .then(response => response.body)
+}

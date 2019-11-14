@@ -11,8 +11,8 @@ module.exports = {
     getUser,
     getPassword,
     getUsersCity,
-    getFullUser
-
+    getFullUser,
+    getServices
 }
 
 
@@ -64,6 +64,10 @@ function getFullUser(username, db = database) {
     return db('users').where('userName', username).select().first()
 }
 
+function getServices(db = database) {
+    console.log("in db.js")
+    return db('services').select()
+}
 
 
 
