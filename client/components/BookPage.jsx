@@ -11,7 +11,8 @@ class BookPage extends React.Component {
             user_id: 1,
             form: {},
             redirectToBookings: false,
-            services: []
+            services: [],
+            inputType: "text"
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -39,12 +40,10 @@ class BookPage extends React.Component {
         this.setState({
             redirectToBookings: true
         })
-        console.log(this.state)
 
     }
 
     handleDateChange(e) {
-        console.log(e.target.value)
         let date = e.target.value
         this.setState({
             bookingDate: date
@@ -60,6 +59,9 @@ class BookPage extends React.Component {
 
     dateChange(e) {
         e.target.value = ""
+        this.setState({
+            inputType: "date"
+        })
     }
 
     getServices() {
@@ -68,9 +70,9 @@ class BookPage extends React.Component {
                 this.setState({
                     services: services
                 })
-                console.log(this.state.services)
             })
     }
+
 
 
 
@@ -82,8 +84,11 @@ class BookPage extends React.Component {
                 <h3>Fill in booking details below</h3>
                 <form>
                     <label>Date:
-                        <input type="text" name="day" value={this.state.bookingDate} onClick={this.dateChange} onChange={this.handleDateChange} required />
+                        <input type={this.state.inputType}
+                            onChange={event => this.onChange(event)} name="day" value={this.state.bookingDate}
+                            onClick={this.dateChange} onChange={this.handleDateChange} required />
                     </label>
+
                     <br />
                     <label>Time:
                         <input type="time" name="bookingTime" onChange={this.handleChange} required />
