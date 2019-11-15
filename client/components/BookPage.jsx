@@ -81,32 +81,34 @@ class BookPage extends React.Component {
 
         return (
             <React.Fragment >
-                <h3>Fill in booking details below</h3>
-                <form>
-                    <label>Date:
+                <div>
+                    <h3>Fill in booking details below</h3>
+                    <form>
+                        <label>Date:
                         <input type={this.state.inputType}
-                            name="day" value={this.state.bookingDate}
-                            onClick={this.dateChange} onChange={this.handleDateChange} required />
-                    </label>
+                                name="day" value={this.state.bookingDate}
+                                onClick={this.dateChange} onChange={this.handleDateChange} required />
+                        </label>
 
-                    <br />
-                    <label>Time:
+                        <br />
+                        <label>Time:
                         <input type="time" name="bookingTime" onChange={this.handleChange} required />
-                    </label>
-                    <br />
-                    <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
-                        <option disabled selected value> -- select an option -- </option>
-                        {servicesArray.map((service) => {
-                            return <option value={service.servicesId}>{service.servicesDescription} {service.servicesFee}</option>
-                        })}
-                    </select>
-                    </label>
+                        </label>
+                        <br />
+                        <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
+                            <option value="default"> -- select an option -- </option>
+                            {servicesArray.map((service) => {
+                                return <option value={service.servicesId}>{service.servicesDescription} {service.servicesFee}</option>
+                            })}
+                        </select>
+                        </label>
 
-                    <br />
+                        <br />
 
-                    <button type="submit" value={this.state} onClick={this.handleSubmit} >Book</button>
-                </form>
-                {this.state.redirectToBookings ? <Redirect to="/bookings" /> : console.log("nope")}
+                        <button type="submit" value={this.state} onClick={this.handleSubmit} >Book</button>
+                    </form>
+                    {this.state.redirectToBookings ? <Redirect to="/bookings" /> : console.log("nope")}
+                </div>
             </React.Fragment >
         )
     }
