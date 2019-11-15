@@ -1,7 +1,6 @@
 exports.seed = knex =>
     knex('services').del()
         .then(() => knex('services').insert([
-            { servicesId: 0000, servicesDescription: "Please select", servicesFee: null },
             { servicesId: 1111, servicesDescription: "Lawn mowing", servicesFee: "$40" },
             { servicesId: 1112, servicesDescription: "Weeding", servicesFee: "$20" },
             { servicesId: 1113, servicesDescription: "Lawn mowing & weeding", servicesFee: "$55" },
