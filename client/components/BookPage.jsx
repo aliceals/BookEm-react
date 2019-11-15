@@ -12,7 +12,7 @@ class BookPage extends React.Component {
             form: {},
             redirectToBookings: false,
             services: [],
-            inputType: "text"
+            inputType: "date"
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)

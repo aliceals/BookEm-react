@@ -32,14 +32,13 @@ class HomePage extends React.Component {
             .then(json => {
                 this.setState({
                     days: [{
-                        date: moment().add(1, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
+                        date: moment().add(1, 'days'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
                     },
-                    { date: moment().add(2, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[1].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[1].icon + '.png' },
-                    { date: moment().add(3, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[2].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[2].icon + '.png' },
-                    { date: moment().add(4, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[3].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[3].icon + '.png' },
-                    { date: moment().add(5, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[4].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[4].icon + '.png' },
-                    { date: moment().add(6, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[5].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[5].icon + '.png' },
-                    { date: moment().add(7, 'days').format('dddd MMM Do YYYY'), highTemp: Math.round(json.data[6].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[6].icon + '.png' }]
+                    { date: moment().add(3, 'days'), highTemp: Math.round(json.data[2].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[2].icon + '.png' },
+                    { date: moment().add(4, 'days'), highTemp: Math.round(json.data[3].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[3].icon + '.png' },
+                    { date: moment().add(5, 'days'), highTemp: Math.round(json.data[4].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[4].icon + '.png' },
+                    { date: moment().add(6, 'days'), highTemp: Math.round(json.data[5].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[5].icon + '.png' },
+                    { date: moment().add(7, 'days'), highTemp: Math.round(json.data[6].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[6].icon + '.png' }]
                 })
             })
     }
@@ -55,6 +54,7 @@ class HomePage extends React.Component {
     render() {
 
         let daysArray = this.state.days
+        console.log(moment().add(1, 'days').toString())
 
         return (
 
@@ -67,7 +67,7 @@ class HomePage extends React.Component {
                     <thead>
                         <tr className="table-primary">
                             {daysArray.map((days) => {
-                                return <th scope="col">{days.date}</th>
+                                return <th scope="col">{days.date.format('dddd MMM Do YYYY')}</th>
                             })
                             }
                         </tr>
@@ -80,7 +80,7 @@ class HomePage extends React.Component {
                         </tr>
                         <tr className="table-primary">
                             {daysArray.map((days) => {
-                                return <td><button onClick={this.changePendingBooking} value={days.date}>Book</button></td>
+                                return <td><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')}>Book</button></td>
                             })}
                         </tr>
                     </tbody>
