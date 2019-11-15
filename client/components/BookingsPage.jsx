@@ -47,12 +47,10 @@ class BookingsPage extends React.Component {
 
                     {bookingArray.map((booking) => {
                         console.log(booking.bookingDate)
-                        console.log(today)
                         if (booking.bookingDate < today) {
-                            console.log("null")
                             return null
                         }
-                        return < li > Date: {booking.bookingDate}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
+                        return < li > Date: {booking.bookingDate.split("-").reverse().join('-')}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
                             <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><br />
                             <hr /></li>
                     })}
