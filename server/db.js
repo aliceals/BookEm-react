@@ -65,7 +65,6 @@ function getFullUser(username, db = database) {
 }
 
 function getServices(db = database) {
-    console.log("in db.js")
     return db('services').select()
 }
 

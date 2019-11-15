@@ -1,12 +1,14 @@
 import React from 'react'
 import { getBookings, deleteBooking } from '../api'
+import moment from 'moment'
 
 class BookingsPage extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            booking: []
+            booking: [],
+
 
         }
 
@@ -36,13 +38,20 @@ class BookingsPage extends React.Component {
     render() {
 
         let bookingArray = this.state.booking
+        let today = moment().format("MMM Do YY")
 
         return (
             <React.Fragment>
                 <h3>These are your upcoming bookings</h3>
                 <ul>
                     {bookingArray.map((booking) => {
-                        return <li>Date: {booking.bookingDate}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
+                        if (booking.bookingDate < today) {
+                            console.log(booking.bookingDate)
+                            console.log(today)
+                            console.log("null")
+                            return null
+                        }
+                        return < li > Date: {booking.bookingDate}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
                             <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><br />
                             <hr /></li>
                     })}
@@ -52,6 +61,7 @@ class BookingsPage extends React.Component {
         )
     }
 }
+
 
 export default BookingsPage
 

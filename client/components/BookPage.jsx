@@ -74,7 +74,7 @@ class BookPage extends React.Component {
     }
 
 
-
+    //fix the drop down issue
 
     render() {
         let servicesArray = this.state.services
@@ -85,7 +85,7 @@ class BookPage extends React.Component {
                 <form>
                     <label>Date:
                         <input type={this.state.inputType}
-                            onChange={event => this.onChange(event)} name="day" value={this.state.bookingDate}
+                            name="day" value={this.state.bookingDate}
                             onClick={this.dateChange} onChange={this.handleDateChange} required />
                     </label>
 
@@ -96,11 +96,13 @@ class BookPage extends React.Component {
                     <br />
                     <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
                         {servicesArray.map((service) => {
-                            return <option value={service.servicesId}>{service.servicesDescription}</option>
+                            return <option value={service.servicesId}>{service.servicesDescription} ${service.servicesFee}</option>
                         })}
                     </select>
                     </label>
+
                     <br />
+
                     <button type="submit" value={this.state} onClick={this.handleSubmit} >Book</button>
                 </form>
                 {this.state.redirectToBookings ? <Redirect to="/bookings" /> : console.log("nope")}
