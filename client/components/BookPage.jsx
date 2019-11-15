@@ -96,7 +96,7 @@ class BookPage extends React.Component {
                     <br />
                     <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
                         {servicesArray.map((service) => {
-                            return <option value={service.servicesId}>{service.servicesDescription} ${service.servicesFee}</option>
+                            return <option value={service.servicesId}>{service.servicesDescription} {service.servicesFee}</option>
                         })}
                     </select>
                     </label>
