@@ -85,6 +85,7 @@ class HomePage extends React.Component {
                         </tr>
                     </tbody>
                 </table>
+
                 {this.state.currentPendingBooking ? <Book day={this.state.currentPendingBooking} /> : null}
             </React.Fragment >
         )
