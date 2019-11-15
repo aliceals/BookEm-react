@@ -38,14 +38,20 @@ class BookingsPage extends React.Component {
     render() {
 
         let bookingArray = this.state.booking
-        let today = moment().format("MMM Do YY")
+        let today = moment().format('YYYY-MM-DD')
 
         return (
             <React.Fragment>
                 <h3>These are your upcoming bookings</h3>
                 <ul>
-                    {bookingArray.map((booking) => {
 
+                    {bookingArray.map((booking) => {
+                        console.log(booking.bookingDate)
+                        console.log(today)
+                        if (booking.bookingDate < today) {
+                            console.log("null")
+                            return null
+                        }
                         return < li > Date: {booking.bookingDate}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
                             <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><br />
                             <hr /></li>
