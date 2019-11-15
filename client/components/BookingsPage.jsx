@@ -50,7 +50,7 @@ class BookingsPage extends React.Component {
                         if (booking.bookingDate < today) {
                             return null
                         }
-                        return < li > Date: {booking.bookingDate.split("-").reverse().join('-')}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
+                        return < li > Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')}<br /> Time: {booking.bookingTime}<br /> Details: {booking.servicesDescription}<br /><br />
                             <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><br />
                             <hr /></li>
                     })}
