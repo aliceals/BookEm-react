@@ -85,4 +85,6 @@ export function login(login) {
     return request.post('/login')
         .send(login.user)
         .then(response => response.text)
+
+
 }

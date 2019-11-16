@@ -35,7 +35,7 @@ class Login extends React.Component {
                     this.setState({
                         loginIncorrect: true
                     })
-                } else if (res == 200) {
+                } else {
                     console.log(res)
                 }
             })
