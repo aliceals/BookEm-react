@@ -6,6 +6,8 @@ exports.up = function (knex) {
         table.integer('job_id')
         table.date('bookingDate')
         table.time('bookingTime')
+        table.integer('contractorId')
+        table.string('status')
     })
 };
 

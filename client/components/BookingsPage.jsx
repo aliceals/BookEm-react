@@ -46,7 +46,6 @@ class BookingsPage extends React.Component {
                 <ul>
 
                     {bookingArray.map((booking) => {
-                        console.log(booking.bookingDate)
                         if (booking.bookingDate < today) {
                             return null
                         }

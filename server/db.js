@@ -12,7 +12,8 @@ module.exports = {
     getPassword,
     getUsersCity,
     getFullUser,
-    getServices
+    getServices,
+    getContractorBookings
 }
 
 
@@ -68,29 +69,10 @@ function getServices(db = database) {
     return db('services').select()
 }
 
-
-
-// function displayWeatherSign(weather) {
-//     if (weather == 'cloudy') {
-//         return "../public/images/cloudy.png"
-//     } else if (weather == 'rain') {
-//         return "../public/images/rainy.png"
-//     } else if (weather == 'clear-day') {
-//         return "../public/images/clear-day.png"
-//     } else if (weather == 'snow') {
-//         return "../public/images/snow.png"
-//     } else if (weather == 'sleet') {
-//         return "../public/images/sleet.png"
-//     } else if (weather == 'wind') {
-//         return "../public/images/windy.png"
-//     } else if (weather == "fog") {
-//         return "../public/images/fog.png"
-//     } else if (weather == "partly-cloudy-day") {
-//         return "../public/images/partly-cloudy.png"
-//     } else if (weather == "hail") {
-//         return "../public/images/hail.png"
-//     } else if (weather == "thunderstorm") {
-//         return "../public/images/thunderstorm.png"
-//     }
-//     else return "../public/images/default.png"
-// }
+function getContractorBookings(contractorId, db = database) {
+    return db('bookings')
+        .join('services', 'job_id', 'servicesId')
+        .join('users', 'user_id', 'userId')
+        .where('contractorId', contractorId)
+        .select()
+}

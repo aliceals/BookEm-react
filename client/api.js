@@ -34,7 +34,6 @@ export function getBookings() {
 
 export function deleteBooking(id) {
     let newid = { bookingId: id }
-    console.log(newid)
     return request
         .delete(`http://localhost:3000/API/bookings/`)
         .send(newid)
@@ -48,8 +47,13 @@ export function getServiceList() {
 }
 
 export function addUser(user) {
-    console.log("this is the api user", user)
     return request.post('/API/register')
         .send(user)
+        .then(response => response.body)
+}
+
+export function getContractorBookings(user) {
+    return request.get('/API/contractor/')
+        .query(`userId=${user}`)
         .then(response => response.body)
 }

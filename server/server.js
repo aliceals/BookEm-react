@@ -3,6 +3,9 @@ const express = require('express')
 const fetch = require('node-fetch')
 const db = require('./db.js')
 const sessionUtils = require('./sessionutils')
+const morgan = require('morgan')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
 const server = express()
 
@@ -45,6 +48,15 @@ server.get('/API/bookings', (req, res) => {
             res.status(500).send(err.message)
         })
 })
+
+server.get('/API/contractor', (req, res) => {
+    db.getContractorBookings(req.query.userId)
+        .then(bookings => {
+            res.send(bookings)
+        })
+})
+
+
 
 server.delete('/API/bookings/', (req, res) => {
     let id = req.body.bookingId
