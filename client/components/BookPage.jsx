@@ -15,13 +15,15 @@ class BookPage extends React.Component {
             form: {},
             redirectToBookings: false,
             services: [],
-            inputType: "date"
+            inputType: "date",
+            showModal: true
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.dateChange = this.dateChange.bind(this)
         this.handleDateChange = this.handleDateChange.bind(this)
         this.getServices = this.getServices.bind(this)
+        this.changeModal = this.changeModal.bind(this)
     }
 
     componentDidMount() {
@@ -76,6 +78,12 @@ class BookPage extends React.Component {
             })
     }
 
+    changeModal() {
+        this.setState({
+            showModal: false
+        })
+    }
+
 
     //fix the drop down issue
 
@@ -85,7 +93,7 @@ class BookPage extends React.Component {
         return (
             <React.Fragment >
 
-                <Modal show={true} size="lg"
+                <Modal show={this.state.showModal} onHide={this.changeModal} size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered>
 
@@ -106,7 +114,7 @@ class BookPage extends React.Component {
                         <input type="time" name="bookingTime" onChange={this.handleChange} required />
                             </label>
                             <br />
-                            <label>Book:<select name="job_id" id="jobId" onChange={this.handleChange}>
+                            <label>Book: <select name="job_id" id="jobId" onChange={this.handleChange}>
                                 <option value="default"> -- select an option -- </option>
                                 {servicesArray.map((service) => {
                                     return <option value={service.servicesId}>{service.servicesDescription} {service.servicesFee}</option>
@@ -123,7 +131,7 @@ class BookPage extends React.Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button variant="secondary">Close</Button>
+                        <Button variant="secondary" onClick={this.changeModal}>Close</Button>
 
                     </Modal.Footer>
                 </Modal>

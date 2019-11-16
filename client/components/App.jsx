@@ -4,6 +4,7 @@ import NavBar from './NavBar'
 import HomePage from './HomePage'
 import BookPage from './BookPage'
 import BookingsPage from './BookingsPage'
+import Login from './Login'
 
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
       <Router>
         <React.Fragment>
           <Route path="/" component={NavBar} />
+          <Route path='/login' component={Login} />
           <Route exact path="/" component={HomePage} />
           <Route path="/book" component={BookPage} />
           <Route exact path="/bookings" component={BookingsPage} />
