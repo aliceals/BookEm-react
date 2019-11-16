@@ -64,10 +64,3 @@ class BookingsPage extends React.Component {
 
 export default BookingsPage
 
-// fetch("/API/bookings")
-//     .then(response => response.json())
-//     .then(json => {
-//         this.setState({
-//             booking: json
-//         })
-//     })

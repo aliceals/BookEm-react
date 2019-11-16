@@ -23,7 +23,7 @@ export function addBooking(booking) {
     }
 
 
-    return request.post('/API/bookings')
+    return request.post('/bookings')
         .send(bookingDetails)
         .then(response => response.body)
 }
@@ -31,7 +31,7 @@ export function addBooking(booking) {
 
 
 export function getBookings() {
-    return request.get('/API/bookings')
+    return request.get('/bookings')
         .then(response => response.body)
 }
 
@@ -39,25 +39,25 @@ export function getBookings() {
 export function deleteBooking(id) {
     let newid = { bookingId: id }
     return request
-        .delete(`http://localhost:3000/API/bookings/`)
+        .delete(`http://localhost:3000/bookings/`)
         .send(newid)
         .then(response => response.body)
 }
 
 export function getServiceList() {
     return request
-        .get('/API/services')
+        .get('/services')
         .then(response => response.body)
 }
 
 export function addUser(user) {
-    return request.post('/API/register')
+    return request.post('/register')
         .send(user)
         .then(response => response.body)
 }
 
 export function getContractorBookings(user) {
-    return request.get('/API/contractor/')
+    return request.get('/contractor/')
         .query(`userId=${user}`)
         .then(response => response.body)
 }
@@ -65,18 +65,24 @@ export function getContractorBookings(user) {
 
 
 export function addContractor(contractor) {
-    return request.post('/API/contractorregister')
+    return request.post('/contractorregister')
         .send(contractor)
         .then(response => response.body)
 }
 
 export function updateBooking(booking, status) {
-    return request.put('/API/bookings')
+    return request.put('/bookings')
         .send({ booking: booking, status: status })
         .then(response => response.body)
 }
 
 export function getContractors() {
-    return request.get('/API/contractornames')
+    return request.get('/contractornames')
         .then(response => response.body)
+}
+
+export function login(login) {
+    return request.post('/login')
+        .send(login.user)
+        .then(response => response.status)
 }

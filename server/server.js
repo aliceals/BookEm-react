@@ -27,20 +27,20 @@ server.use(session({
 }))
 
 
-server.get('/API/services', (req, res) => {
+server.get('/services', (req, res) => {
     db.getServices()
         .then(services => {
             res.send(services)
         })
 })
 
-server.get('/API/user', (req, res) => {
+server.get('/user', (req, res) => {
     res.send({
         name: "Alice", city: "Porirua"
     })
 })
 
-server.get('/API/bookings', (req, res) => {
+server.get('/bookings', (req, res) => {
     db.getBookings(1)
         .then(bookings => {
             res.send(bookings)
@@ -49,7 +49,7 @@ server.get('/API/bookings', (req, res) => {
         })
 })
 
-server.get('/API/contractor', (req, res) => {
+server.get('/contractor', (req, res) => {
     db.getContractorBookings(req.query.userId)
         .then(bookings => {
             res.send(bookings)
@@ -58,7 +58,7 @@ server.get('/API/contractor', (req, res) => {
 
 
 
-server.delete('/API/bookings/', (req, res) => {
+server.delete('/bookings/', (req, res) => {
     let id = req.body.bookingId
     console.log("this is the id", id)
     //validate that the booking belongs to the user and check session
@@ -69,7 +69,7 @@ server.delete('/API/bookings/', (req, res) => {
 })
 
 
-server.get('/API/weather', (req, res) => {
+server.get('/weather', (req, res) => {
     fetch(`https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si`)
         .then((res) => res.json())
         .then(json => {
@@ -77,7 +77,7 @@ server.get('/API/weather', (req, res) => {
         })
 })
 
-server.post('/API/bookings', (req, res) => {
+server.post('/bookings', (req, res) => {
     let booking = req.body
     console.log(booking)
     db.addBooking(1, booking)
@@ -87,7 +87,7 @@ server.post('/API/bookings', (req, res) => {
 })
 
 
-server.post('/API/register', (req, res) => {
+server.post('/register', (req, res) => {
     let user = req.body
     db.createUser(user)
         .then(() => {
@@ -97,7 +97,7 @@ server.post('/API/register', (req, res) => {
 
 
 
-server.post('/API/contractorregister', (req, res) => {
+server.post('/contractorregister', (req, res) => {
     let contractor = req.body
     console.log(contractor)
     db.addContractor(contractor)
@@ -107,7 +107,7 @@ server.post('/API/contractorregister', (req, res) => {
 })
 
 
-server.put('/API/bookings', (req, res) => {
+server.put('/bookings', (req, res) => {
     let bookingId = req.body.booking
     let status = req.body.status
     db.updateBooking(bookingId, status)
@@ -119,7 +119,7 @@ server.put('/API/bookings', (req, res) => {
         })
 })
 
-server.get('/API/contractornames', (req, res) => {
+server.get('/contractornames', (req, res) => {
     db.getContractors()
         .then(contractors => {
             res.send(contractors)
@@ -127,33 +127,31 @@ server.get('/API/contractornames', (req, res) => {
 })
 
 
-// server.get('/API/user', (req, res) => {
-//     db.getUser("Alice Alsford")
-//         .then(data => { res.send(data) })
-//         .then(() => {
-//             console.log(data)
-//         })
-// })
+server.post('/login', (req, res) => {
+    let username = req.body.username
+    let password = req.body.password
 
-// server.get('/API/bookings', (req, res) => {
-//     db.getBookings("Alice Alsford")
-//         .then(data => {
-//             res.send(data)
-//         })
-//         .then(() => {
-//             console.log(data)
-//         })
-// })
+    db.getUser(username)
+        .then(username => {
 
-// server.get('/API/services', (req, res) => {
-//     db.getServices()
-//         .then(data => {
-//             res.send(data)
-//         })
-//         .then(() => {
-//             console.log(data)
-//         })
-// })
+            if (!username) {
+                console.log("no user with this username")
+                res.sendStatus(401)
+            } else {
+                db.getPassword(username.userName, password)
+                    .then(password => {
+                        if (!password) {
+                            console.log("incorrect password")
+                            res.sendStatus(401)
+                        } else {
+                            console.log("correct username")
+                            req.session.username = username
+                            res.send(req.session.username)
+                        }
+                    })
+            }
+        })
+})
 
 
 

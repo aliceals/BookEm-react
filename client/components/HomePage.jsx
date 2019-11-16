@@ -18,7 +18,7 @@ class HomePage extends React.Component {
 
 
     componentDidMount() {
-        fetch("/API/user")
+        fetch("/user")
             .then(response => response.json())
             .then(json => {
                 this.setState({
@@ -27,7 +27,7 @@ class HomePage extends React.Component {
                 })
             })
 
-        fetch("/API/weather")
+        fetch("/weather")
             .then(response => response.json())
             .then(json => {
                 this.setState({
