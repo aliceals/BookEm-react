@@ -41,6 +41,7 @@ class BookPage extends React.Component {
         this.setState({
             form: form
         })
+        console.log(this.state)
     }
 
     handleSubmit(e) {
@@ -134,6 +135,7 @@ class BookPage extends React.Component {
                                 })}
                             </select>
                             </label>
+                            <br />
                             <label>Book from: <select name="contractorId" id="contractorId" onChange={this.handleChange}>
                                 <option value="default"> -- select an option -- </option>
                                 {contractorsArray.map((contractor) => {
@@ -146,7 +148,7 @@ class BookPage extends React.Component {
 
                             <button type="submit" value={this.state} onClick={this.handleSubmit} >Book</button>
                         </form>
-                        {this.state.redirectToBookings ? <Redirect to="/bookings" /> : console.log("nope")}
+                        {this.state.redirectToBookings ? <Redirect to="/bookings" /> : null}
 
                     </Modal.Body>
 

@@ -54,7 +54,6 @@ class HomePage extends React.Component {
     render() {
 
         let daysArray = this.state.days
-        console.log(moment().add(1, 'days').toString())
 
         return (
 
