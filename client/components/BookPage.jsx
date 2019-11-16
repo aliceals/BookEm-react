@@ -10,6 +10,7 @@ class BookPage extends React.Component {
         super(props)
 
         this.state = {
+            status: "pending",
             bookingDate: this.props.day,
             user_id: 1,
             form: {},
