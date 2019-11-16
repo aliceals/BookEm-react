@@ -15,7 +15,8 @@ module.exports = {
     getServices,
     getContractorBookings,
     addContractor,
-    updateBooking
+    updateBooking,
+    getContractors
 }
 
 
@@ -87,5 +88,10 @@ function updateBooking(bookingId, status, db = database) {
     return db('bookings')
         .update({ status: status })
         .where('bookingId', bookingId)
+        .select()
+}
+
+function getContractors(db = database) {
+    return db('contractors')
         .select()
 }

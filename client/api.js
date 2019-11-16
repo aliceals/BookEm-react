@@ -72,3 +72,8 @@ export function updateBooking(booking, status) {
         .send({ booking: booking, status: status })
         .then(response => response.body)
 }
+
+export function getContractors() {
+    return request.get('/API/contractornames')
+        .then(response => response.body)
+}

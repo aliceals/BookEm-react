@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { addBooking, getServiceList } from '../api'
+import { addBooking, getServiceList, getContractors } from '../api'
 import { Modal, Button } from 'react-bootstrap'
 
 
@@ -16,6 +16,7 @@ class BookPage extends React.Component {
             form: {},
             redirectToBookings: false,
             services: [],
+            contractors: [],
             inputType: "date",
             showModal: true
         }
@@ -25,10 +26,12 @@ class BookPage extends React.Component {
         this.handleDateChange = this.handleDateChange.bind(this)
         this.getServices = this.getServices.bind(this)
         this.changeModal = this.changeModal.bind(this)
+        this.getContractors = this.getContractors.bind(this)
     }
 
     componentDidMount() {
         this.getServices()
+        this.getContractors()
     }
 
 
@@ -85,11 +88,20 @@ class BookPage extends React.Component {
         })
     }
 
+    getContractors() {
+        getContractors()
+            .then(contractors => {
+                this.setState({
+                    contractors: contractors
+                })
+            })
+    }
 
     //fix the drop down issue
 
     render() {
         let servicesArray = this.state.services
+        let contractorsArray = this.state.contractors
 
         return (
             <React.Fragment >
@@ -119,6 +131,13 @@ class BookPage extends React.Component {
                                 <option value="default"> -- select an option -- </option>
                                 {servicesArray.map((service) => {
                                     return <option value={service.servicesId}>{service.servicesDescription} {service.servicesFee}</option>
+                                })}
+                            </select>
+                            </label>
+                            <label>Book from: <select name="contractorId" id="contractorId" onChange={this.handleChange}>
+                                <option value="default"> -- select an option -- </option>
+                                {contractorsArray.map((contractor) => {
+                                    return <option value={contractor.contractorId}>{contractor.contractorName} -- {contractor.contractorCity} </option>
                                 })}
                             </select>
                             </label>

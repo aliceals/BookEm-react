@@ -119,6 +119,13 @@ server.put('/API/bookings', (req, res) => {
         })
 })
 
+server.get('/API/contractornames', (req, res) => {
+    db.getContractors()
+        .then(contractors => {
+            res.send(contractors)
+        })
+})
+
 
 // server.get('/API/user', (req, res) => {
 //     db.getUser("Alice Alsford")
