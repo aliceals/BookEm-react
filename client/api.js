@@ -66,3 +66,9 @@ export function addContractor(contractor) {
         .send(contractor)
         .then(response => response.body)
 }
+
+export function updateBooking(booking, status) {
+    return request.put('/API/bookings')
+        .send({ booking: booking, status: status })
+        .then(response => response.body)
+}

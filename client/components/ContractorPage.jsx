@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { getContractorBookings } from '../api'
+import { updateBooking } from '../api'
 import moment from 'moment'
 
 class ContractorPage extends React.Component {
@@ -9,18 +10,37 @@ class ContractorPage extends React.Component {
         this.state = {
             bookings: []
         }
+
+        this.changeStatus = this.changeStatus.bind(this)
+        this.refreshData = this.refreshData.bind(this)
     }
 
     componentDidMount() {
+        this.refreshData()
+    }
+
+    changeStatus(e) {
+        let bookingId = e.target.name
+        let status = "confirmed"
+        updateBooking(bookingId, status)
+            .then(() => {
+                this.refreshData()
+            })
+    }
+
+    refreshData() {
+        console.log("refresh here")
         let user = "2221"
         getContractorBookings(user)
             .then(bookings => {
                 this.setState({
                     bookings: bookings
                 })
-                console.log("state", this.state.bookings)
+                console.log("i have set state")
             })
     }
+
+
 
 
     render() {
@@ -29,7 +49,7 @@ class ContractorPage extends React.Component {
 
         return (
 
-            <React.Fragment>
+            <React.Fragment >
                 <h2> Welcome to BookEm</h2>
                 <h4>This is the Contractor Page</h4>
                 <h5>Welcome {this.state.name}</h5>
@@ -40,7 +60,7 @@ class ContractorPage extends React.Component {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
                                 Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
                                 Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
-                                <button name={booking.bookingId} >Accept</button>
+                                <button name={booking.bookingId} onClick={this.changeStatus}>Accept</button>
                                 <button name={booking.bookingId} >Decline</button><hr></hr></li>
 
                         }
@@ -68,7 +88,7 @@ class ContractorPage extends React.Component {
                         }
                     })}
                 </ul>
-            </React.Fragment>
+            </React.Fragment >
         )
 
     }

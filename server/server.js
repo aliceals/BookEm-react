@@ -81,8 +81,8 @@ server.post('/API/bookings', (req, res) => {
     let booking = req.body
     console.log(booking)
     db.addBooking(1, booking)
-        .then(data => {
-            console.log(data)
+        .then(() => {
+            res.sendStatus(204)
         })
 })
 
@@ -90,8 +90,8 @@ server.post('/API/bookings', (req, res) => {
 server.post('/API/register', (req, res) => {
     let user = req.body
     db.createUser(user)
-        .then(data => {
-            console.log(data)
+        .then(() => {
+            res.sendStatus(204)
         })
 })
 
@@ -101,13 +101,23 @@ server.post('/API/contractorregister', (req, res) => {
     let contractor = req.body
     console.log(contractor)
     db.addContractor(contractor)
-        .then(data => {
-            console.log(data)
+        .then(() => {
+            res.sendStatus(204)
         })
 })
 
 
-
+server.put('/API/bookings', (req, res) => {
+    let bookingId = req.body.booking
+    let status = req.body.status
+    db.updateBooking(bookingId, status)
+        .then(() => {
+            res.sendStatus(204)
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+})
 
 
 // server.get('/API/user', (req, res) => {

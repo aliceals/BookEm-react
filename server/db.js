@@ -14,7 +14,8 @@ module.exports = {
     getFullUser,
     getServices,
     getContractorBookings,
-    addContractor
+    addContractor,
+    updateBooking
 }
 
 
@@ -80,4 +81,11 @@ function getContractorBookings(contractorId, db = database) {
 
 function addContractor(contractor, db = database) {
     return db('contractors').insert(contractor).select()
+}
+
+function updateBooking(bookingId, status, db = database) {
+    return db('bookings')
+        .update({ status: status })
+        .where('bookingId', bookingId)
+        .select()
 }
