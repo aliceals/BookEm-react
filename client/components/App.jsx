@@ -5,6 +5,7 @@ import HomePage from './HomePage'
 import BookPage from './BookPage'
 import BookingsPage from './BookingsPage'
 import Login from './Login'
+import Register from './Register'
 
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
         <React.Fragment>
           <Route path="/" component={NavBar} />
           <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
           <Route exact path="/" component={HomePage} />
           <Route path="/book" component={BookPage} />
           <Route exact path="/bookings" component={BookingsPage} />
