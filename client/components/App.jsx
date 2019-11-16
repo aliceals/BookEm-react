@@ -6,6 +6,7 @@ import BookPage from './BookPage'
 import BookingsPage from './BookingsPage'
 import Login from './Login'
 import Register from './Register'
+import ContractorPage from './ContractorPage'
 
 
 class App extends React.Component {
@@ -19,6 +20,7 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route path="/book" component={BookPage} />
           <Route exact path="/bookings" component={BookingsPage} />
+          <Route path="/contractor" component={ContractorPage} />
         </React.Fragment>
       </Router>
     )

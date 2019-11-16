@@ -2,11 +2,27 @@ const path = require('path')
 const express = require('express')
 const fetch = require('node-fetch')
 const db = require('./db.js')
+const sessionUtils = require('./sessionutils')
 
 const server = express()
 
 server.use(express.static(path.join(__dirname, '../public')))
 server.use(express.json())
+server.use(morgan('dev'))
+server.use(cookieParser())
+
+
+// initialize express - session to allow us track the logged-in user across session
+server.use(session({
+    key: 'user_sid',
+    secret: 'somerandomstuffs',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000
+    }
+}))
+
 
 server.get('/API/services', (req, res) => {
     db.getServices()

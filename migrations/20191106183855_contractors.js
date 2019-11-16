@@ -4,9 +4,9 @@ exports.up = function (knex) {
         table.increments('contractorId').primary()
         table.string('contractorName')
         table.string('contractorCity')
-        table.string('email')
-        table.integer('phoneNumber')
-        table.string('password')
+        table.string('contractorEmail')
+        table.integer('contractorNumber')
+        table.string('contractorpassword')
     })
 };
 
