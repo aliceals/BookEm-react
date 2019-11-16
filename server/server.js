@@ -41,13 +41,6 @@ server.delete('/API/bookings/', (req, res) => {
 })
 
 
-
-// server.get('/API/database', (req, res) => {
-
-//     res.send({ banana: "banana" })
-// })
-
-
 server.get('/API/weather', (req, res) => {
     fetch(`https://api.darksky.net/forecast/6fe0e60f51867939f3313dd1351dcd17/-41.131489,174.839996?units=si`)
         .then((res) => res.json())
@@ -66,7 +59,13 @@ server.post('/API/bookings', (req, res) => {
 })
 
 
-
+server.post('/API/register', (req, res) => {
+    let user = req.body
+    db.createUser(user)
+        .then(data => {
+            console.log(data)
+        })
+})
 
 
 

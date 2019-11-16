@@ -1,5 +1,8 @@
 import request from 'superagent'
 
+
+
+
 export function addBooking(booking) {
 
 
@@ -41,5 +44,12 @@ export function deleteBooking(id) {
 export function getServiceList() {
     return request
         .get('/API/services')
+        .then(response => response.body)
+}
+
+export function addUser(user) {
+    console.log("this is the api user", user)
+    return request.post('/API/register')
+        .send(user)
         .then(response => response.body)
 }
