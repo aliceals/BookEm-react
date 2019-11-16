@@ -21,7 +21,7 @@ class ContractorPage extends React.Component {
 
     changeStatus(e) {
         let bookingId = e.target.name
-        let status = "confirmed"
+        let status = e.target.value
         updateBooking(bookingId, status)
             .then(() => {
                 this.refreshData()
@@ -60,8 +60,8 @@ class ContractorPage extends React.Component {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
                                 Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
                                 Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
-                                <button name={booking.bookingId} onClick={this.changeStatus}>Accept</button>
-                                <button name={booking.bookingId} >Decline</button><hr></hr></li>
+                                <button name={booking.bookingId} value="confirmed" onClick={this.changeStatus}>Accept</button>
+                                <button name={booking.bookingId} value="declined" onClick={this.changeStatus}>Decline</button><hr></hr></li>
 
                         }
                     })}
