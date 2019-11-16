@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getContractorBookings } from '../api'
-import { updateBooking } from '../api'
+import { getContractorBookings, updateBooking, deleteBooking } from '../api'
 import moment from 'moment'
 
 class ContractorPage extends React.Component {
@@ -13,6 +12,7 @@ class ContractorPage extends React.Component {
 
         this.changeStatus = this.changeStatus.bind(this)
         this.refreshData = this.refreshData.bind(this)
+        this.deleteBooking = this.deleteBooking.bind(this)
     }
 
     componentDidMount() {
@@ -41,6 +41,14 @@ class ContractorPage extends React.Component {
     }
 
 
+    deleteBooking(e) {
+        let bookingId = e.target.name
+        deleteBooking(bookingId)
+            .then(() => {
+                this.refreshData()
+            })
+
+    }
 
 
     render() {
@@ -73,7 +81,7 @@ class ContractorPage extends React.Component {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
                                 Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
                                 Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
-                                <button name={booking.bookingId} >Cancel</button><hr></hr></li>
+                                <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><hr></hr></li>
                         }
                     })}
                 </ul>
