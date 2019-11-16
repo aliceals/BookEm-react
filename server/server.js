@@ -133,16 +133,16 @@ server.post('/login', (req, res) => {
 
     db.getUser(username)
         .then(username => {
-
+            console.log("TCL: username", username)
             if (!username) {
                 console.log("no user with this username")
-                res.sendStatus(401)
+                res.send("404")
             } else {
                 db.getPassword(username.userName, password)
                     .then(password => {
                         if (!password) {
                             console.log("incorrect password")
-                            res.sendStatus(401)
+                            res.send("404")
                         } else {
                             console.log("correct username")
                             req.session.username = username

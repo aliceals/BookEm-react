@@ -84,5 +84,5 @@ export function getContractors() {
 export function login(login) {
     return request.post('/login')
         .send(login.user)
-        .then(response => response.status)
+        .then(response => response.text)
 }

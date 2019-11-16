@@ -31,12 +31,10 @@ class Login extends React.Component {
         e.preventDefault()
         login(this.state)
             .then(res => {
-                if (res == 401) {
-                    console.log("401 here")
+                if (res == "404") {
                     this.setState({
                         loginIncorrect: true
                     })
-                    console.log("changed", this.state)
                 } else if (res == 200) {
                     console.log(res)
                 }
