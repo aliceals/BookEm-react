@@ -97,10 +97,14 @@ server.post('/API/register', (req, res) => {
 
 
 
-
-
-
-
+server.post('/API/contractorregister', (req, res) => {
+    let contractor = req.body
+    console.log(contractor)
+    // db.createUser(user)
+    //     .then(data => {
+    //         console.log(data)
+    //     })
+})
 
 
 

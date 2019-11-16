@@ -13,7 +13,8 @@ module.exports = {
     getUsersCity,
     getFullUser,
     getServices,
-    getContractorBookings
+    getContractorBookings,
+    addContractor
 }
 
 
@@ -75,4 +76,8 @@ function getContractorBookings(contractorId, db = database) {
         .join('users', 'user_id', 'userId')
         .where('contractorId', contractorId)
         .select()
+}
+
+function addContractor(contractor, db = database) {
+    return db('contractors').insert(contractor).select()
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-class Login extends React.Component {
+class ContractorLogin extends React.Component {
     constructor(props) {
         super(props)
 
@@ -30,8 +30,8 @@ class Login extends React.Component {
 
                 </form>
                 <br></br>
-                <Link to="/register"><button>Register</button></Link>
-                <Link to="/contractorlogin"><button>Contractor Login</button></Link>
+                <Link to="/contractorregister"><button>Register for Contractor</button></Link>
+                <Link to="/login"><button>Client login</button></Link>
 
             </React.Fragment>
         )
@@ -39,4 +39,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login                
+export default ContractorLogin               

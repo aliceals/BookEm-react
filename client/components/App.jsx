@@ -7,6 +7,8 @@ import BookingsPage from './BookingsPage'
 import Login from './Login'
 import Register from './Register'
 import ContractorPage from './ContractorPage'
+import ContractorLogin from './ContractorLogin'
+import ContractorRegister from './ContractorRegister'
 
 
 class App extends React.Component {
@@ -21,6 +23,8 @@ class App extends React.Component {
           <Route path="/book" component={BookPage} />
           <Route exact path="/bookings" component={BookingsPage} />
           <Route path="/contractor" component={ContractorPage} />
+          <Route path="/contractorlogin" component={ContractorLogin} />
+          <Route path="/contractorregister" component={ContractorRegister} />
         </React.Fragment>
       </Router>
     )

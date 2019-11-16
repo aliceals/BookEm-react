@@ -50,7 +50,7 @@ class BookingsPage extends React.Component {
                             return null
                         }
                         return < li > Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')}<br /> Time: {booking.bookingTime}<br />
-                            Details: {booking.servicesDescription}<br></br> Status: {booking.status}<br></br>
+                            Details: {booking.servicesDescription}<br></br> Status: {booking.status}<br></br><br></br>
                             <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><br />
                             <hr /></li>
                     })}

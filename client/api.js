@@ -57,3 +57,11 @@ export function getContractorBookings(user) {
         .query(`userId=${user}`)
         .then(response => response.body)
 }
+
+
+
+export function addContractor(contractor) {
+    return request.post('/API/contractorregister')
+        .send(contractor)
+        .then(response => response.body)
+}
