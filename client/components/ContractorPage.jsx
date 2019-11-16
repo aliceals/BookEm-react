@@ -39,14 +39,35 @@ class ContractorPage extends React.Component {
                         if (booking.bookingDate > today && booking.status == "pending") {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
                                 Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
-                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><hr></hr></li>
+                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
+                                <button name={booking.bookingId} >Accept</button>
+                                <button name={booking.bookingId} >Decline</button><hr></hr></li>
 
                         }
                     })}
                 </ul>
-                <h6>These are your upcoming bookings:</h6>
+                <ul>
+                    <h6>These are your upcoming bookings:</h6>
+                    {bookingsArray.map((booking) => {
+                        if (booking.bookingDate > today && booking.status == "confirmed") {
+                            return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
+                                Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
+                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
+                                <button name={booking.bookingId} >Cancel</button><hr></hr></li>
+                        }
+                    })}
+                </ul>
                 <h6>These are your past bookings:</h6>
-
+                <ul>
+                    {bookingsArray.map((booking) => {
+                        if (booking.bookingDate < today && booking.status == "confirmed") {
+                            return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
+                                Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
+                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
+                                <button name={booking.bookingId} >Archive</button><hr></hr></li>
+                        }
+                    })}
+                </ul>
             </React.Fragment>
         )
 
