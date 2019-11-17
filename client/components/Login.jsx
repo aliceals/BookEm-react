@@ -37,8 +37,16 @@ class Login extends React.Component {
                         loginIncorrect: true
                     })
                 } else {
-                    let userName = JSON.parse(res).userName
-                    window.location.href = "/"
+                    let user = JSON.parse(res)
+                    let userRole = user.role
+                    if (userRole == 'client') {
+                        console.log("client")
+                        window.location.href = "/"
+                    }
+                    else if (userRole == 'contractor') {
+                        console.log("client")
+                        window.location.href = '/#/contractor'
+                    }
                 }
             })
     }

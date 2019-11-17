@@ -36,9 +36,7 @@ server.get('/services', (req, res) => {
 })
 
 server.get('/user', (req, res) => {
-
-    let username = req.session.username.userName
-
+    let username = req.session.user.userName
     db.getUser(username)
         .then(user => {
             res.send(user)
@@ -46,7 +44,7 @@ server.get('/user', (req, res) => {
 })
 
 server.get('/bookings', (req, res) => {
-    db.getBookings(req.session.username.userName)
+    db.getBookings(req.session.user.userName)
         .then(bookings => {
             res.send(bookings)
         }).catch(err => {
@@ -85,7 +83,7 @@ server.get('/weather', (req, res) => {
 
 server.post('/bookings', (req, res) => {
     let booking = req.body
-    let userId = req.session.username.userId
+    let userId = req.session.user.userId
     booking.clientId = userId
     db.addBooking(booking)
         .then(() => {
@@ -152,8 +150,8 @@ server.post('/login', (req, res) => {
                             res.send("404")
                         } else {
                             console.log("correct username")
-                            req.session.username = username
-                            res.send(req.session.username)
+                            req.session.user = username
+                            res.send(req.session.user)
                         }
                     })
             }

@@ -49,7 +49,7 @@ function createUser(user, db = database) {
 }
 
 function getUser(username, db = database) {
-    return db('users').where('userName', username).select('userName', 'userCity', 'userId').first()
+    return db('users').where('userName', username).select('userName', 'userCity', 'userId', 'role').first()
 }
 
 function getPassword(username, password, db = database) {
