@@ -27,40 +27,42 @@ class HomePage extends React.Component {
     componentWillMount() {
 
         if (!cookies.get('appsession')) {
-            console.log("cookies")
             window.location.href = "/#/login"
+        } else {
+            console.log("im in here")
+            this.setState({
+                userName: this.props.location.state.username
+            })
         }
     }
 
 
-    // componentDidMount() {
-    //     this.setState({
-    //         userName: this.props.location.state.username
-    //     }).then(() => {
-    //         getUser(this.state.userName)
-    //             .then(user => {
-    //                 this.setState({
-    //                     city: user.userCity
-    //                 })
+    componentDidMount() {
 
-    //             })
-    //     })
+        getUser(this.state.userName)
+            .then(user => {
+                this.setState({
+                    city: user.userCity
+                })
+
+            })
 
 
-    // getWeather()
-    //         .then(json => {
-    //     this.setState({
-    //         days: [{
-    //             date: moment().add(1, 'days'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
-    //         },
-    //         { date: moment().add(3, 'days'), highTemp: Math.round(json.data[2].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[2].icon + '.png' },
-    //         { date: moment().add(4, 'days'), highTemp: Math.round(json.data[3].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[3].icon + '.png' },
-    //         { date: moment().add(5, 'days'), highTemp: Math.round(json.data[4].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[4].icon + '.png' },
-    //         { date: moment().add(6, 'days'), highTemp: Math.round(json.data[5].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[5].icon + '.png' },
-    //         { date: moment().add(7, 'days'), highTemp: Math.round(json.data[6].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[6].icon + '.png' }]
-    //     })
-    //         })
-    // }
+
+        getWeather()
+            .then(json => {
+                this.setState({
+                    days: [{
+                        date: moment().add(1, 'days'), highTemp: Math.round(json.data[0].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[0].icon + '.png'
+                    },
+                    { date: moment().add(3, 'days'), highTemp: Math.round(json.data[2].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[2].icon + '.png' },
+                    { date: moment().add(4, 'days'), highTemp: Math.round(json.data[3].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[3].icon + '.png' },
+                    { date: moment().add(5, 'days'), highTemp: Math.round(json.data[4].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[4].icon + '.png' },
+                    { date: moment().add(6, 'days'), highTemp: Math.round(json.data[5].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[5].icon + '.png' },
+                    { date: moment().add(7, 'days'), highTemp: Math.round(json.data[6].temperatureHigh), lowTemp: Math.round(json.data[0].temperatureLow), icon: '/images/' + json.data[6].icon + '.png' }]
+                })
+            })
+    }
 
 
     changePendingBooking(event) {
