@@ -1,6 +1,7 @@
 import React from 'react'
 import Book from './BookPage'
 import moment from 'moment'
+import { getUser, getWeather } from '../api'
 
 
 class HomePage extends React.Component {
@@ -13,22 +14,20 @@ class HomePage extends React.Component {
         }
 
         this.changePendingBooking = this.changePendingBooking.bind(this)
-
     }
 
 
     componentDidMount() {
-        fetch("/user")
-            .then(response => response.json())
-            .then(json => {
+        getUser()
+            .then(user => {
                 this.setState({
-                    name: json.name,
-                    city: json.city
+                    name: user.name,
+                    city: user.city
                 })
+                console.log(this.state)
             })
 
-        fetch("/weather")
-            .then(response => response.json())
+        getWeather()
             .then(json => {
                 this.setState({
                     days: [{

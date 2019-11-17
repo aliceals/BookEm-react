@@ -88,3 +88,13 @@ export function login(login) {
 
 
 }
+
+export function getUser() {
+    return request.get('/user')
+        .then(response => response.body)
+}
+
+export function getWeather() {
+    return request.get('/weather')
+        .then(response => response.body)
+}
