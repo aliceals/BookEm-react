@@ -2,7 +2,9 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { addBooking, getServiceList, getContractors } from '../api'
 import { Modal, Button } from 'react-bootstrap'
+import Cookies from 'universal-cookie'
 
+const cookies = new Cookies()
 
 
 class BookPage extends React.Component {
@@ -29,6 +31,19 @@ class BookPage extends React.Component {
         this.getContractors = this.getContractors.bind(this)
     }
 
+    componentWillMount() {
+
+        if (!cookies.get('appsession')) {
+            window.location.href = "/#/login"
+        } else {
+            console.log("im in here")
+            // this.setState({
+            //     userName: this.props.location.state.username
+            // })
+        }
+    }
+
+
     componentDidMount() {
         this.getServices()
         this.getContractors()
@@ -41,7 +56,6 @@ class BookPage extends React.Component {
         this.setState({
             form: form
         })
-        console.log(this.state)
     }
 
     handleSubmit(e) {
