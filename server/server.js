@@ -17,11 +17,12 @@ server.use(cookieParser())
 
 // initialize express - session to allow us track the logged-in user across session
 server.use(session({
-    key: 'user_sid',
+    key: 'appsession',
     secret: 'somerandomstuffs',
     resave: false,
     saveUninitialized: false,
     cookie: {
+        httpOnly: false,
         expires: 600000
     }
 }))
