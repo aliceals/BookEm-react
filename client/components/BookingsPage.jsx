@@ -1,6 +1,9 @@
 import React from 'react'
 import { getBookings, deleteBooking } from '../api'
 import moment from 'moment'
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies()
 
 class BookingsPage extends React.Component {
     constructor(props) {
@@ -13,6 +16,17 @@ class BookingsPage extends React.Component {
         }
 
         this.deleteBooking = this.deleteBooking.bind(this)
+    }
+
+    componentWillMount() {
+        if (!cookies.get('appsession')) {
+            window.location.href = "/#/login"
+        } else {
+            console.log("im in here")
+            // this.setState({
+            //     userName: this.props.location.state.username
+            // })
+        }
     }
 
     componentDidMount() {
