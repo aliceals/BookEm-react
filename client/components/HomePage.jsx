@@ -32,14 +32,6 @@ class HomePage extends React.Component {
 
 
     componentDidMount() {
-        getUser()
-            .then(user => {
-                this.setState({
-                    city: user.userCity
-                })
-
-            })
-
 
 
         getWeather()
@@ -79,21 +71,21 @@ class HomePage extends React.Component {
                 <table className="table table-bordered table-hover">
                     <thead>
                         <tr className="table-primary">
-                            {daysArray.map((days) => {
-                                return <th scope="col">{days.date.format('dddd MMM Do YYYY')}</th>
+                            {daysArray.map((days, i) => {
+                                return <th key={i} scope="col">{days.date.format('dddd MMM Do YYYY')}</th>
                             })
                             }
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="table-primary">
-                            {daysArray.map((days) => {
-                                return <td><img src={days.icon} /><br></br>High: {days.highTemp}°C <br></br>Low: {days.lowTemp}°C </td>
+                            {daysArray.map((days, i) => {
+                                return <td key={i}><img src={days.icon} /><br></br>High: {days.highTemp}°C <br></br>Low: {days.lowTemp}°C </td>
                             })}
                         </tr>
                         <tr className="table-primary">
-                            {daysArray.map((days) => {
-                                return <td><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')}>Book</button></td>
+                            {daysArray.map((days, i) => {
+                                return <td key={i}><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')}>Book</button></td>
                             })}
                         </tr>
                     </tbody>

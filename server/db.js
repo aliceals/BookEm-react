@@ -31,7 +31,7 @@ function addBooking(userId, booking, db = database) {
 function getBookings(username, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
-        .join('users', 'userId', 'userId')
+        .join('users', 'bookings.userId', 'users.userId')
         .where('userName', username)
         .select()
 }

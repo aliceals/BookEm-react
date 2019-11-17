@@ -49,6 +49,7 @@ server.get('/bookings', (req, res) => {
         .then(bookings => {
             res.send(bookings)
         }).catch(err => {
+            console.error(err)
             res.status(500).send(err.message)
         })
 })
