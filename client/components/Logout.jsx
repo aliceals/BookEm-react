@@ -30,7 +30,7 @@ class Login extends React.Component {
         return (
 
             <React.Fragment>
-
+                <h1>Log out page</h1>
             </React.Fragment>
         )
 

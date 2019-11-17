@@ -30,7 +30,7 @@ function addBooking(booking, db = database) {
 function getBookings(username, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
-        .join('users', 'bookings.userId', 'users.userId')
+        .join('users', 'bookings.clientId', 'users.userId')
         .where('userName', username)
         .select()
 }
@@ -68,7 +68,7 @@ function getServices(db = database) {
 function getContractorBookings(contractorId, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
-        .join('users', 'userId', 'userId')
+        .join('users', 'bookings.contractorId', 'users.userId')
         .where('contractorId', contractorId)
         .select()
 }
@@ -88,3 +88,4 @@ function getContractors(db = database) {
     return db('contractors')
         .select()
 }
+
