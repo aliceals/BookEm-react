@@ -9,7 +9,8 @@ class Login extends React.Component {
 
         this.state = {
             user: {},
-            loginIncorrect: false
+            loginIncorrect: false,
+            redirectToHome: false
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -36,7 +37,11 @@ class Login extends React.Component {
                         loginIncorrect: true
                     })
                 } else {
+                    this.setState({
+                        redirectToHome: true
+                    })
                     console.log(res)
+                    console.log(this.state)
                 }
             })
     }
@@ -67,7 +72,7 @@ class Login extends React.Component {
                 <Link to="/register"><button>Register</button></Link>
                 <Link to="/contractorlogin"><button>Contractor Login</button></Link>
                 {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : console.log("nope")}
-
+                {this.state.redirectToHome ? <Redirect to="/" /> : null}
             </React.Fragment>
         )
 
