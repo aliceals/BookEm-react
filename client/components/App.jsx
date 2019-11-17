@@ -11,6 +11,7 @@ import ContractorLogin from './ContractorLogin'
 import ContractorRegister from './ContractorRegister'
 import { getUser } from '../api'
 import Cookies from 'universal-cookie'
+import Logout from './Logout'
 
 const cookies = new Cookies()
 
@@ -47,13 +48,12 @@ class App extends React.Component {
             {this.state.user} />} />
           <Route exact path="/book" render={(props) => <BookPage {...props} user=
             {this.state.user} />} />
-          {/* <Route path="/book" component={BookPage} /> */}
           <Route exact path="/bookings" render={(props) => <BookingsPage {...props} user=
             {this.state.user} />} />
-          {/* <Route exact path="/bookings" component={BookingsPage} /> */}
           <Route path="/contractor" component={ContractorPage} />
           <Route path="/contractorlogin" component={ContractorLogin} />
           <Route path="/contractorregister" component={ContractorRegister} />
+          <Route path="/logout" component={Logout} />
         </React.Fragment>
       </Router>
     )

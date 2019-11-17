@@ -1,7 +1,7 @@
 import React from 'react'
 import Book from './BookPage'
 import moment from 'moment'
-import { getUser, getWeather } from '../api'
+import { getWeather } from '../api'
 import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
