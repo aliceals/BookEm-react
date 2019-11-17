@@ -22,17 +22,17 @@ module.exports = {
 
 function addBooking(userId, booking, db = database) {
     return db('bookings')
-        .where('user_id', userId)
+        .where('userId', userId)
         .insert(booking)
         .select()
 
 }
 
-function getBookings(userId, db = database) {
+function getBookings(username, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
-        .join('users', 'user_id', 'userId')
-        .where('userId', userId)
+        .join('users', 'userId', 'userId')
+        .where('userName', username)
         .select()
 }
 
@@ -51,7 +51,7 @@ function createUser(user, db = database) {
 }
 
 function getUser(username, db = database) {
-    return db('users').where('userName', username).select('userName', 'userCity').first()
+    return db('users').where('userName', username).select('userName', 'userCity', 'userId').first()
 }
 
 function getPassword(username, password, db = database) {
@@ -70,7 +70,7 @@ function getServices(db = database) {
 function getContractorBookings(contractorId, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
-        .join('users', 'user_id', 'userId')
+        .join('users', 'userId', 'userId')
         .where('contractorId', contractorId)
         .select()
 }

@@ -26,9 +26,7 @@ class HomePage extends React.Component {
             window.location.href = "/#/login"
         } else {
             console.log("im in here")
-            // this.setState({
-            //     userName: this.props.location.state.username
-            // })
+
         }
     }
 
@@ -68,7 +66,6 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log("TCL: HomePage -> constructor -> props", this.props)
 
         let daysArray = this.state.days
 

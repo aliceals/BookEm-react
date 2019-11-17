@@ -11,27 +11,25 @@ class BookingsPage extends React.Component {
 
         this.state = {
             booking: [],
-
-
         }
-
         this.deleteBooking = this.deleteBooking.bind(this)
     }
+
+
 
     componentWillMount() {
         if (!cookies.get('appsession')) {
             window.location.href = "/#/login"
         } else {
             console.log("im in here")
-            // this.setState({
-            //     userName: this.props.location.state.username
-            // })
+
         }
     }
 
     componentDidMount() {
         this.refreshData()
     }
+
 
     deleteBooking(e) {
         let bookingId = e.target.name

@@ -45,7 +45,7 @@ server.get('/user', (req, res) => {
 })
 
 server.get('/bookings', (req, res) => {
-    db.getBookings(1)
+    db.getBookings(req.session.username.userName)
         .then(bookings => {
             res.send(bookings)
         }).catch(err => {
@@ -83,8 +83,8 @@ server.get('/weather', (req, res) => {
 
 server.post('/bookings', (req, res) => {
     let booking = req.body
-    console.log(booking)
-    db.addBooking(1, booking)
+    let userId = req.session.username.userId
+    db.addBooking(userId, booking)
         .then(() => {
             res.sendStatus(204)
         })

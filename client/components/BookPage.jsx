@@ -14,13 +14,13 @@ class BookPage extends React.Component {
         this.state = {
             status: "pending",
             bookingDate: this.props.day,
-            user_id: 1,
+            userId: 1,
             form: {},
             redirectToBookings: false,
             services: [],
             contractors: [],
             inputType: "date",
-            showModal: true
+            showModal: true,
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,6 +36,7 @@ class BookPage extends React.Component {
         if (!cookies.get('appsession')) {
             window.location.href = "/#/login"
         } else {
+
             console.log("im in here")
         }
     }
@@ -45,6 +46,8 @@ class BookPage extends React.Component {
         this.getServices()
         this.getContractors()
     }
+
+
 
 
     handleChange(e) {
@@ -114,6 +117,7 @@ class BookPage extends React.Component {
     render() {
         let servicesArray = this.state.services
         let contractorsArray = this.state.contractors
+
 
         return (
             <React.Fragment >
