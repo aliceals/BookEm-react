@@ -20,9 +20,8 @@ module.exports = {
 
 
 
-function addBooking(userId, booking, db = database) {
+function addBooking(booking, db = database) {
     return db('bookings')
-        .where('userId', userId)
         .insert(booking)
         .select()
 
@@ -35,7 +34,6 @@ function getBookings(username, db = database) {
         .where('userName', username)
         .select()
 }
-
 
 
 function deleteBooking(bookingId, db = database) {

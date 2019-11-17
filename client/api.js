@@ -4,10 +4,7 @@ import request from 'superagent'
 
 
 export function addBooking(booking) {
-    console.log("this", booking)
-
     let status = booking.status
-    let userId = booking.userId
     let job_id = booking.form.job_id
     let bookingDate = booking.bookingDate
     let bookingTime = booking.form.bookingTime
@@ -15,7 +12,6 @@ export function addBooking(booking) {
 
     let bookingDetails = {
         status: status,
-        userId: userId,
         job_id: job_id,
         bookingDate: bookingDate,
         bookingTime: bookingTime,
@@ -85,8 +81,6 @@ export function login(login) {
     return request.post('/login')
         .send(login.user)
         .then(response => response.text)
-
-
 }
 
 export function getUser() {

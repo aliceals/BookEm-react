@@ -85,7 +85,8 @@ server.get('/weather', (req, res) => {
 server.post('/bookings', (req, res) => {
     let booking = req.body
     let userId = req.session.username.userId
-    db.addBooking(userId, booking)
+    booking.userId = userId
+    db.addBooking(booking)
         .then(() => {
             res.sendStatus(204)
         })
