@@ -35,9 +35,10 @@ server.get('/services', (req, res) => {
 })
 
 server.get('/user', (req, res) => {
-    res.send({
-        name: "Alice", city: "Porirua"
-    })
+    db.getFullUser(req.query.username)
+        .then(user => {
+            res.send(user)
+        })
 })
 
 server.get('/bookings', (req, res) => {

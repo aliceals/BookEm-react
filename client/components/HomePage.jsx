@@ -10,22 +10,23 @@ class HomePage extends React.Component {
 
         this.state = {
             days: [],
-            currentPendingBooking: null
+            currentPendingBooking: null,
+            userName: this.props.location.state.username
         }
-
         this.changePendingBooking = this.changePendingBooking.bind(this)
     }
 
 
     componentDidMount() {
-        getUser()
+
+        getUser(this.state.userName)
             .then(user => {
                 this.setState({
-                    name: user.name,
-                    city: user.city
+                    city: user.userCity
                 })
-                console.log(this.state)
+
             })
+
 
         getWeather()
             .then(json => {
@@ -58,7 +59,7 @@ class HomePage extends React.Component {
 
             < React.Fragment >
                 <h1 className="title">BookEm</h1>
-                <h4 className="hi">Hi {this.state.name}</h4>
+                <h4 className="hi">Hi {this.state.userName}</h4>
                 <h5 className="city">From {this.state.city}</h5>
                 <h6 className="weatherTitle">Weather for the upcoming week:</h6>
                 <table className="table table-bordered table-hover">

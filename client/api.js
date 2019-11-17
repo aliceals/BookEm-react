@@ -89,8 +89,9 @@ export function login(login) {
 
 }
 
-export function getUser() {
+export function getUser(user) {
     return request.get('/user')
+        .query(`username=${user}`)
         .then(response => response.body)
 }
 
