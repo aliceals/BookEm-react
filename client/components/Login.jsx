@@ -38,11 +38,7 @@ class Login extends React.Component {
                     })
                 } else {
                     let userName = JSON.parse(res).userName
-                    this.setState({
-                        redirectToHome: true,
-                        sessionUsername: userName
-                    })
-
+                    window.location.href = "/"
                 }
             })
     }
@@ -73,7 +69,6 @@ class Login extends React.Component {
                 <Link to="/register"><button>Register</button></Link>
                 <Link to="/contractorlogin"><button>Contractor Login</button></Link>
                 {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : null}
-                {this.state.redirectToHome ? <Redirect to={{ pathname: "/", state: { username: this.state.sessionUsername } }} /> : null}
             </React.Fragment>
         )
 

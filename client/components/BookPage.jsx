@@ -37,9 +37,6 @@ class BookPage extends React.Component {
             window.location.href = "/#/login"
         } else {
             console.log("im in here")
-            // this.setState({
-            //     userName: this.props.location.state.username
-            // })
         }
     }
 

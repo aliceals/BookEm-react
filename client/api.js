@@ -89,9 +89,8 @@ export function login(login) {
 
 }
 
-export function getUser(user) {
+export function getUser() {
     return request.get('/user')
-        .query(`username=${user}`)
         .then(response => response.body)
 }
 
@@ -99,3 +98,4 @@ export function getWeather() {
     return request.get('/weather')
         .then(response => response.body)
 }
+

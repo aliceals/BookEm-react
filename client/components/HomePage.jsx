@@ -11,16 +11,12 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props)
 
-        console.log("TCL: HomePage -> componentWillMount -> cookies.get('appsession')", cookies.get('appsession'))
-
         this.state = {
             days: [],
             currentPendingBooking: null,
-            // userName: this.props.location.state.username,
             redirectToLogin: false
         }
 
-        console.log(this.state)
         this.changePendingBooking = this.changePendingBooking.bind(this)
     }
 
@@ -30,16 +26,15 @@ class HomePage extends React.Component {
             window.location.href = "/#/login"
         } else {
             console.log("im in here")
-            this.setState({
-                userName: this.props.location.state.username
-            })
+            // this.setState({
+            //     userName: this.props.location.state.username
+            // })
         }
     }
 
 
     componentDidMount() {
-
-        getUser(this.state.userName)
+        getUser()
             .then(user => {
                 this.setState({
                     city: user.userCity
@@ -73,6 +68,7 @@ class HomePage extends React.Component {
     }
 
     render() {
+        console.log("TCL: HomePage -> constructor -> props", this.props)
 
         let daysArray = this.state.days
 
@@ -80,8 +76,8 @@ class HomePage extends React.Component {
 
             < React.Fragment >
                 <h1 className="title">BookEm</h1>
-                <h4 className="hi">Hi {this.state.userName}</h4>
-                <h5 className="city">From {this.state.city}</h5>
+                <h4 className="hi">Hi {this.props.user.userName}</h4>
+                <h5 className="city">From {this.props.user.userCity}</h5>
                 <h6 className="weatherTitle">Weather for the upcoming week:</h6>
                 <table className="table table-bordered table-hover">
                     <thead>

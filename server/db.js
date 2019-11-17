@@ -11,7 +11,6 @@ module.exports = {
     getUser,
     getPassword,
     getUsersCity,
-    getFullUser,
     getServices,
     getContractorBookings,
     addContractor,
@@ -52,7 +51,7 @@ function createUser(user, db = database) {
 }
 
 function getUser(username, db = database) {
-    return db('users').where('userName', username).select('userName').first()
+    return db('users').where('userName', username).select('userName', 'userCity').first()
 }
 
 function getPassword(username, password, db = database) {
@@ -62,10 +61,6 @@ function getPassword(username, password, db = database) {
 function getUsersCity(username, db = database) {
     return db('users').where('userName', username).select('userCity').first()
 
-}
-
-function getFullUser(username, db = database) {
-    return db('users').where('userName', username).select().first()
 }
 
 function getServices(db = database) {

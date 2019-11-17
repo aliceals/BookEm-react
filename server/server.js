@@ -36,7 +36,9 @@ server.get('/services', (req, res) => {
 })
 
 server.get('/user', (req, res) => {
-    db.getFullUser(req.query.username)
+    let username = req.session.username.userName
+
+    db.getUser(username)
         .then(user => {
             res.send(user)
         })

@@ -9,9 +9,28 @@ import Register from './Register'
 import ContractorPage from './ContractorPage'
 import ContractorLogin from './ContractorLogin'
 import ContractorRegister from './ContractorRegister'
+import { getUser } from '../api'
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: {}
+    }
+
+  }
+
+  componentDidMount() {
+    getUser()
+      .then(user => {
+        this.setState({
+          user: user
+        })
+      })
+  }
+
+
   render() {
     return (
       <Router>
@@ -19,8 +38,11 @@ class App extends React.Component {
           <Route path="/" component={NavBar} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-          <Route exact path="/" component={HomePage} />
-          <Route path="/book" component={BookPage} />
+          <Route exact path="/" render={(props) => <HomePage {...props} user=
+            {this.state.user} />} />
+          <Route exact path="/book" render={(props) => <BookPage {...props} user=
+            {this.state.user} />} />
+          {/* <Route path="/book" component={BookPage} /> */}
           <Route exact path="/bookings" component={BookingsPage} />
           <Route path="/contractor" component={ContractorPage} />
           <Route path="/contractorlogin" component={ContractorLogin} />
