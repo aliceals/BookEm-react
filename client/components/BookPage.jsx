@@ -120,7 +120,7 @@ class BookPage extends React.Component {
 
 
         return (
-            <React.Fragment >
+            <React.Fragment className="main">
 
                 <Modal show={this.state.showModal} onHide={this.changeModal} size="lg"
                     aria-labelledby="contained-modal-title-vcenter"

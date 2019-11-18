@@ -44,7 +44,7 @@ class App extends React.Component {
         <React.Fragment>
 
           {this.state.user.role == "client" ?
-            <React.Fragment className="main">
+            <React.Fragment >
               <Route path="/" component={NavBar} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />

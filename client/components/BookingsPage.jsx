@@ -53,7 +53,7 @@ class BookingsPage extends React.Component {
         let today = moment().format('YYYY-MM-DD')
 
         return (
-            <React.Fragment>
+            <React.Fragment className="main">
                 <h3>These are your upcoming bookings</h3>
                 <ul>
 
