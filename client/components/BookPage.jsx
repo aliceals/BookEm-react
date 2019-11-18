@@ -31,15 +31,7 @@ class BookPage extends React.Component {
         this.getContractors = this.getContractors.bind(this)
     }
 
-    componentWillMount() {
 
-        if (!cookies.get('appsession')) {
-            window.location.href = "/#/login"
-        } else {
-
-            console.log("im in here")
-        }
-    }
 
 
     componentDidMount() {

@@ -17,14 +17,7 @@ class BookingsPage extends React.Component {
 
 
 
-    componentWillMount() {
-        if (!cookies.get('appsession')) {
-            window.location.href = "/#/login"
-        } else {
-            console.log("im in here")
 
-        }
-    }
 
     componentDidMount() {
         this.refreshData()

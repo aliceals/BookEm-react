@@ -20,15 +20,7 @@ class HomePage extends React.Component {
         this.changePendingBooking = this.changePendingBooking.bind(this)
     }
 
-    componentWillMount() {
 
-        if (!cookies.get('appsession')) {
-            window.location.href = "/#/login"
-        } else {
-            console.log("im in here")
-
-        }
-    }
 
 
     componentDidMount() {
