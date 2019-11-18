@@ -27,9 +27,9 @@ class Register extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         addUser(this.state.user)
-        this.setState({
-            redirectToLogin: true
-        })
+            .then(() => {
+                window.location.href = '/#/login'
+            })
     }
 
     render() {
@@ -91,7 +91,6 @@ class Register extends React.Component {
 
                 </form>
                 <br></br>
-                <Link to="/login"><button>Login</button></Link>
             </React.Fragment>
         )
 

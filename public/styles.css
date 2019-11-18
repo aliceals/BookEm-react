@@ -1,6 +1,5 @@
-.table{
-    margin-left: 10px;
-   
+* {
+    font-family: 'Source Code Pro', monospace;
 }
 
 .title {
@@ -20,7 +19,12 @@
 }
 
 .navbar {
-  background-color: aliceblue;
+  background-color: #293462;
+ 
+}
+
+.nav-item a{
+     color: #ffdc34 !important;
 }
 
 
@@ -28,3 +32,13 @@
     margin-top: 10px;
     color: red
 }
+
+#mapid { height: 180px; }
+
+
+.main {
+background-color: #9be3de;
+}
+
+
+

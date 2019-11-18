@@ -64,35 +64,37 @@ class HomePage extends React.Component {
         return (
 
             < React.Fragment >
-                <h1 className="title">BookEm</h1>
-                <h4 className="hi">Hi {this.props.user.userName}</h4>
-                <h5 className="city">From {this.props.user.userCity}</h5>
-                <h6 className="weatherTitle">Weather for the upcoming week:</h6>
-                <table className="table table-bordered table-hover">
-                    <thead>
-                        <tr className="table-primary">
-                            {daysArray.map((days, i) => {
-                                return <th key={i} scope="col">{days.date.format('dddd MMM Do YYYY')}</th>
-                            })
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="table-primary">
-                            {daysArray.map((days, i) => {
-                                return <td key={i}><img src={days.icon} /><br></br>High: {days.highTemp}°C <br></br>Low: {days.lowTemp}°C </td>
-                            })}
-                        </tr>
-                        <tr className="table-primary">
-                            {daysArray.map((days, i) => {
-                                return <td key={i}><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')}>Book</button></td>
-                            })}
-                        </tr>
-                    </tbody>
-                </table>
-                {this.state.redirectLogin ? <Redirect to="/login" /> : null}
+                <div className="home">
+                    <h1 className="title">BookEm</h1>
+                    <h4 className="hi">Hi {this.props.user.userName}</h4>
+                    <h5 className="city">From {this.props.user.userCity}</h5>
+                    <h6 className="weatherTitle">Weather for the upcoming week:</h6>
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr className="table-primary">
+                                {daysArray.map((days, i) => {
+                                    return <th key={i} scope="col">{days.date.format('dddd MMM Do YYYY')}</th>
+                                })
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="table-primary">
+                                {daysArray.map((days, i) => {
+                                    return <td key={i}><img src={days.icon} /><br></br>High: {days.highTemp}°C <br></br>Low: {days.lowTemp}°C </td>
+                                })}
+                            </tr>
+                            <tr className="table-primary">
+                                {daysArray.map((days, i) => {
+                                    return <td key={i}><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')}>Book</button></td>
+                                })}
+                            </tr>
+                        </tbody>
+                    </table>
+                    {this.state.redirectLogin ? <Redirect to="/login" /> : null}
 
-                {this.state.currentPendingBooking ? <Book day={this.state.currentPendingBooking} /> : null}
+                    {this.state.currentPendingBooking ? <Book day={this.state.currentPendingBooking} /> : null}
+                </div>
             </React.Fragment >
         )
     }

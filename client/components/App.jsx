@@ -10,6 +10,7 @@ import ContractorPage from './ContractorPage'
 import { getUser } from '../api'
 import Cookies from 'universal-cookie'
 import Logout from './Logout'
+import MapPage from './Map'
 
 const cookies = new Cookies()
 
@@ -41,13 +42,14 @@ class App extends React.Component {
     return (
       <Router>
         <React.Fragment>
-          <Route path="/" component={NavBar} />
-          <Route path='/login' component={Login} />
-          <Route path='/register' component={Register} />
-          <Route path="/logout" component={Logout} />
-          {this.state.user.role == "client" ?
 
-            <React.Fragment>
+          {this.state.user.role == "client" ?
+            <React.Fragment className="main">
+              <Route path="/" component={NavBar} />
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+              <Route path="/logout" component={Logout} />
+
               <Route exact path="/" render={(props) => <HomePage {...props} user=
                 {this.state.user} />} />
               <Route exact path="/book" render={(props) => <BookPage {...props} user=
@@ -57,6 +59,10 @@ class App extends React.Component {
             </React.Fragment>
 
             : <React.Fragment>
+              <Route path="/" component={NavBar} />
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+              <Route path="/logout" component={Logout} />
               <Route path="/contractor" render={(props) => <ContractorPage {...props} user=
                 {this.state.user} />} />
             </React.Fragment>}

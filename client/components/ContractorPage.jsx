@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { getContractorBookings, updateBooking, deleteBooking } from '../api'
 import moment from 'moment'
+import { Map } from './Map'
 
 class ContractorPage extends React.Component {
     constructor(props) {
@@ -46,8 +47,9 @@ class ContractorPage extends React.Component {
             .then(() => {
                 this.refreshData()
             })
-
     }
+
+
 
 
     render() {
@@ -95,6 +97,7 @@ class ContractorPage extends React.Component {
                         }
                     })}
                 </ul>
+                <div id="mapid"><Link to="/map">Click</Link></div>
             </React.Fragment >
         )
 
