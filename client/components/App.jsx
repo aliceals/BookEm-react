@@ -26,12 +26,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+
     if (cookies.get('appsession')) {
       getUser()
         .then(user => {
           this.setState({
             user: user
           })
+
         })
     }
   }
@@ -44,17 +46,24 @@ class App extends React.Component {
           <Route path="/" component={NavBar} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-          <Route exact path="/" render={(props) => <HomePage {...props} user=
-            {this.state.user} />} />
-          <Route exact path="/book" render={(props) => <BookPage {...props} user=
-            {this.state.user} />} />
-          <Route exact path="/bookings" render={(props) => <BookingsPage {...props} user=
-            {this.state.user} />} />
-          <Route path="/contractor" component={ContractorPage} />
-          <Route path="/contractorlogin" component={ContractorLogin} />
-          <Route path="/contractorregister" component={ContractorRegister} />
           <Route path="/logout" component={Logout} />
+          {this.state.user.role == "client" ?
+
+            <React.Fragment>
+              <Route exact path="/" render={(props) => <HomePage {...props} user=
+                {this.state.user} />} />
+              <Route exact path="/book" render={(props) => <BookPage {...props} user=
+                {this.state.user} />} />
+              <Route exact path="/bookings" render={(props) => <BookingsPage {...props} user=
+                {this.state.user} />} />
+            </React.Fragment>
+
+            : <React.Fragment>
+              <Route path="/contractor" render={(props) => <ContractorPage {...props} user=
+                {this.state.user} />} />
+            </React.Fragment>}
         </React.Fragment>
+
       </Router>
     )
   }
@@ -63,3 +72,4 @@ class App extends React.Component {
 
 export default App
 
+// { this.state.user.role == "client" : ? null}
