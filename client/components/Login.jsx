@@ -75,7 +75,6 @@ class Login extends React.Component {
                 </form>
                 <br></br>
                 <Link to="/register"><button>Register</button></Link>
-                <Link to="/contractorlogin"><button>Contractor Login</button></Link>
                 {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : null}
             </React.Fragment>
         )
