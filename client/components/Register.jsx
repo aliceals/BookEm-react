@@ -69,6 +69,12 @@ class Register extends React.Component {
                             placeholder="0220220222" onChange={this.handleChange} />
                     </label>
                     <br></br>
+                    <label>Role:
+                        <input type="text"
+                            name="role"
+                            placeholder="client or contractor" onChange={this.handleChange} />
+                    </label>
+                    <br></br>
                     <label>Password:
                         <input type="password"
                             name="password"
