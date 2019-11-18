@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getContractorBookings, updateBooking, deleteBooking } from '../api'
+import { getContractorBookings, updateBooking, deleteBooking, getUserCityCoords } from '../api'
 import moment from 'moment'
-import { Map } from './Map'
+import MapPage from './Map'
+import Geocode from 'react-geocode'
 
 class ContractorPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            bookings: []
+            bookings: [],
+            latLong: [-41.113108, 174.9049647]
         }
 
         this.changeStatus = this.changeStatus.bind(this)
@@ -33,9 +35,15 @@ class ContractorPage extends React.Component {
 
         getContractorBookings()
             .then(bookings => {
-                console.log(bookings)
                 this.setState({
                     bookings: bookings
+                })
+            })
+            .then(() => {
+                let clientArray = this.state.bookings
+                clientArray.map((client) => {
+
+                    getUserCityCoords(client.userAddress)
                 })
             })
     }
@@ -50,11 +58,14 @@ class ContractorPage extends React.Component {
     }
 
 
+    getUserCity
+
 
 
     render() {
         let bookingsArray = this.state.bookings
         let today = moment().format('YYYY-MM-DD')
+
 
         return (
 
@@ -97,7 +108,8 @@ class ContractorPage extends React.Component {
                         }
                     })}
                 </ul>
-                <div id="mapid"><Link to="/map">Click</Link></div>
+                <h5>Map of bookings:</h5>
+                <MapPage coords={this.state.latLong} />
             </React.Fragment >
         )
 

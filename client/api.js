@@ -92,3 +92,8 @@ export function getWeather() {
         .then(response => response.body)
 }
 
+// export function getUserCityCoords(cityCoords) {
+//     return request.get()
+//     //run get to api calling lat and long
+
+// }

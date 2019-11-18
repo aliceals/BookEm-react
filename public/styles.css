@@ -1,6 +1,6 @@
-* {
+/* * {
     font-family: 'Source Code Pro', monospace;
-}
+} */
 
 .title {
     margin: 10px;
@@ -19,13 +19,21 @@
 }
 
 .navbar {
-  background-color: #293462;
+  background-color: black;
  
-}
+} 
+
+
+
+/* 
+body {
+ background-image: url("/images/background5.jpg")
+} */
+
 
 .nav-item a{
-     color: #ffdc34 !important;
-}
+     color:white
+} 
 
 
 .incorrectUser {
@@ -35,11 +43,10 @@
 
 #mapid { height: 180px; }
 
-
-body {
-background-color: #beebe9 !important;
+.leaflet-container {
+    height: 400px;
+    width: 800px;
 }
-
 
 
 

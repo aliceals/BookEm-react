@@ -159,7 +159,9 @@ server.post('/login', (req, res) => {
 })
 
 
-
+server.post('/userCityCoords', (req, res) => {
+    db.getUserCoords
+})
 
 
 

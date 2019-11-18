@@ -69,6 +69,7 @@ class App extends React.Component {
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path="/logout" component={Logout} />
+              <Route path="/map" component={MapPage} />
               <Route path="/contractor" render={(props) => <ContractorPage {...props} user=
                 {this.state.user} />} />
             </React.Fragment>}
