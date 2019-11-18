@@ -35,6 +35,19 @@ function getBookings(username, db = database) {
         .select()
 }
 
+function getContractorBookings(username, db = database) {
+    return db('bookings')
+        .join('services', 'job_id', 'servicesId')
+        .join('users', 'bookings.contractorId', 'users.userId')
+        .where('userName', username)
+        .select()
+}
+
+
+
+
+
+
 
 function deleteBooking(bookingId, db = database) {
     return db('bookings').where('bookingId', bookingId).delete()
@@ -65,13 +78,13 @@ function getServices(db = database) {
     return db('services').select()
 }
 
-function getContractorBookings(contractorId, db = database) {
-    return db('bookings')
-        .join('services', 'job_id', 'servicesId')
-        .join('users', 'bookings.contractorId', 'users.userId')
-        .where('contractorId', contractorId)
-        .select()
-}
+// function getContractorBookings(contractorId, db = database) {
+//     return db('bookings')
+//         .join('services', 'job_id', 'servicesId')
+//         .join('users', 'bookings.contractorId', 'users.userId')
+//         .where('contractorId', contractorId)
+//         .select()
+// }
 
 function addContractor(contractor, db = database) {
     return db('contractors').insert(contractor).select()

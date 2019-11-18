@@ -29,14 +29,13 @@ class ContractorPage extends React.Component {
     }
 
     refreshData() {
-        console.log("refresh here")
-        let user = "2221"
-        getContractorBookings(user)
+
+        getContractorBookings()
             .then(bookings => {
+                console.log(bookings)
                 this.setState({
                     bookings: bookings
                 })
-                console.log("i have set state")
             })
     }
 

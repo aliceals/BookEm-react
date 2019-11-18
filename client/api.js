@@ -52,9 +52,8 @@ export function addUser(user) {
         .then(response => response.body)
 }
 
-export function getContractorBookings(user) {
+export function getContractorBookings() {
     return request.get('/contractor/')
-        .query(`userId=${user}`)
         .then(response => response.body)
 }
 

@@ -54,7 +54,7 @@ server.get('/bookings', (req, res) => {
 })
 
 server.get('/contractor', (req, res) => {
-    db.getContractorBookings(req.query.userId)
+    db.getContractorBookings(req.session.user.userName)
         .then(bookings => {
             res.send(bookings)
         })
