@@ -23,6 +23,8 @@ class ContractorPage extends React.Component {
     }
 
     changeStatus(e) {
+
+        console.log("target value", e.target.value)
         let bookingId = e.target.name
         let status = e.target.value
         updateBooking(bookingId, status)

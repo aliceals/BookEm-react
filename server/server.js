@@ -56,6 +56,7 @@ server.get('/bookings', (req, res) => {
 server.get('/contractor', (req, res) => {
     db.getContractorBookings(req.session.user.userName)
         .then(bookings => {
+            console.log("bookings", bookings)
             res.send(bookings)
         })
 })
@@ -115,6 +116,7 @@ server.post('/contractorregister', (req, res) => {
 server.put('/bookings', (req, res) => {
     let bookingId = req.body.booking
     let status = req.body.status
+
     db.updateBooking(bookingId, status)
         .then(() => {
             res.sendStatus(204)

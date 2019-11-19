@@ -39,10 +39,14 @@ function getBookings(username, db = database) {
 function getContractorBookings(username, db = database) {
     return db('bookings')
         .join('services', 'job_id', 'servicesId')
-        .join('users', 'bookings.contractorId', 'users.userId')
-        .where('userName', username)
-        .select('clientId', 'bookingDate', 'bookingTime', 'status', 'servicesDescription')
+        .join('users as contractor', 'bookings.contractorId', 'contractor.userId')
+        .join('users as client', 'bookings.clientId', 'client.userId')
+        .where('contractor.userName', username)
+        .select('bookings.clientId', 'bookingDate', 'bookingTime', 'status', 'servicesDescription', 'bookingId',
+            'contractor.userName as contractorUsername', 'client.userName as clientUsername', 'client.userAddress as clientAddress',
+            'client.userCity as clientCity')
 }
+
 
 function getClientInfo(id, db = database) {
     return db('users')
