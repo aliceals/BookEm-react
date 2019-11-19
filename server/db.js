@@ -15,7 +15,8 @@ module.exports = {
     getContractorBookings,
     addContractor,
     updateBooking,
-    getContractors
+    getContractors,
+    getClientInfo
 }
 
 
@@ -40,13 +41,14 @@ function getContractorBookings(username, db = database) {
         .join('services', 'job_id', 'servicesId')
         .join('users', 'bookings.contractorId', 'users.userId')
         .where('userName', username)
-        .select()
+        .select('clientId', 'bookingDate', 'bookingTime', 'status', 'servicesDescription')
 }
 
-
-
-
-
+function getClientInfo(id, db = database) {
+    return db('users')
+        .where('userId', id)
+        .select('userName', 'userAddress', 'userCity', 'phoneNumber')
+}
 
 
 function deleteBooking(bookingId, db = database) {

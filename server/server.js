@@ -159,10 +159,13 @@ server.post('/login', (req, res) => {
 })
 
 
-server.post('/userCityCoords', (req, res) => {
-    db.getUserCoords
+server.get('/lnglat', (req, res) => {
+    fetch(`https://api.opencagedata.com/geocode/v1/json?q=76%20Samwell%20Drive%20Whitby%20Porirua&key=e49c348785874a5c9d9699b08b00239f&language=en&pretty=1`)
+        .then((res) => res.json())
+        .then(json => {
+            res.send(json.results[0].geometry)
+        })
 })
-
 
 
 module.exports = server

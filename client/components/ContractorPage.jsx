@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { getContractorBookings, updateBooking, deleteBooking, getUserCityCoords } from '../api'
+import { getContractorBookings, updateBooking, deleteBooking, getCoords } from '../api'
 import moment from 'moment'
 import MapPage from './Map'
 import Geocode from 'react-geocode'
@@ -10,7 +10,7 @@ class ContractorPage extends React.Component {
         super(props)
         this.state = {
             bookings: [],
-            latLong: [-41.113108, 174.9049647]
+
         }
 
         this.changeStatus = this.changeStatus.bind(this)
@@ -32,20 +32,20 @@ class ContractorPage extends React.Component {
     }
 
     refreshData() {
-
         getContractorBookings()
             .then(bookings => {
                 this.setState({
                     bookings: bookings
                 })
             })
-            .then(() => {
-                let clientArray = this.state.bookings
-                clientArray.map((client) => {
 
-                    getUserCityCoords(client.userAddress)
+        getCoords()
+            .then(coords => {
+                this.setState({
+                    coords: coords
                 })
             })
+
     }
 
 
@@ -58,7 +58,6 @@ class ContractorPage extends React.Component {
     }
 
 
-    getUserCity
 
 
 
@@ -109,7 +108,7 @@ class ContractorPage extends React.Component {
                     })}
                 </ul>
                 <h5>Map of bookings:</h5>
-                <MapPage coords={this.state.latLong} />
+                <MapPage coords={this.state.coords} />
             </React.Fragment >
         )
 
