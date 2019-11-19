@@ -6,6 +6,7 @@ const sessionUtils = require('./sessionutils')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const request = require('superagent')
 
 const server = express()
 
@@ -56,7 +57,6 @@ server.get('/bookings', (req, res) => {
 server.get('/contractor', (req, res) => {
     db.getContractorBookings(req.session.user.userName)
         .then(bookings => {
-            console.log("bookings", bookings)
             res.send(bookings)
         })
 })
@@ -65,7 +65,6 @@ server.get('/contractor', (req, res) => {
 
 server.delete('/bookings/', (req, res) => {
     let id = req.body.bookingId
-    console.log("this is the id", id)
     //validate that the booking belongs to the user and check session
     db.deleteBooking(id)
         .then((response) => {
@@ -162,11 +161,25 @@ server.post('/login', (req, res) => {
 
 
 server.get('/lnglat', (req, res) => {
-    fetch(`https://api.opencagedata.com/geocode/v1/json?q=76%20Samwell%20Drive%20Whitby%20Porirua&key=e49c348785874a5c9d9699b08b00239f&language=en&pretty=1`)
-        .then((res) => res.json())
-        .then(json => {
-            res.send(json.results[0].geometry)
-        })
+
+    let addressArray = Object.values(req.query)
+
+    let arr = addressArray.map((address) => {
+        return address.split(" ").join('%20')
+    })
+
+
+    let arrayOfPromises = arr.map((address) => {
+
+        return request.get(`https://api.opencagedata.com/geocode/v1/json?q=${address}&key=e49c348785874a5c9d9699b08b00239f&language=en&pretty=1`)
+            .then(response => response.body.results[0].geometry)
+
+    })
+
+    Promise.all(arrayOfPromises).then((results) => {
+        res.send(results)
+    })
+
 })
 
 

@@ -93,8 +93,9 @@ export function getWeather() {
         .then(response => response.body)
 }
 
-export function getCoords() {
+export function getCoords(addressArray) {
     return request.get('/lnglat')
+        .query(addressArray)
         .then(response => response.body)
 }
 

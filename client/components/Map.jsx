@@ -7,15 +7,28 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 class Map extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            coords: []
+        }
 
     }
 
+    componentDidMount() {
+        this.setState({
+            coords: this.props.coords
+        })
+    }
+
     render() {
+        console.log(this.props.coords)
+        console.log(this.state)
+
+
         return (
 
 
             <LeafletMap
-                center={this.props.coords} //make this usercity
+                center={[-41.1115568, 174.8891837]} //make this usercity
                 zoom={13}
                 maxZoom={20}
                 attributionControl={true}
@@ -30,7 +43,7 @@ class Map extends React.Component {
                 <TileLayer
                     url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                 />
-                <Marker position={this.props.coords}>
+                <Marker position={[-41.1115568, 174.8891837]}>
                     <Popup>
                         Lawn Mowing
                         09:00

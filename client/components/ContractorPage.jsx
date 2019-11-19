@@ -24,7 +24,6 @@ class ContractorPage extends React.Component {
 
     changeStatus(e) {
 
-        console.log("target value", e.target.value)
         let bookingId = e.target.name
         let status = e.target.value
         updateBooking(bookingId, status)
@@ -39,14 +38,23 @@ class ContractorPage extends React.Component {
                 this.setState({
                     bookings: bookings
                 })
+            }).then(() => {
+                let bookingsArray = this.state.bookings
+
+                let clientAddress = bookingsArray.map((client) => {
+                    return client.clientAddress + ' ' + client.clientCity
+                })
+
+                getCoords(clientAddress)
+                    .then(coords => {
+                        this.setState({
+                            coords: coords
+                        })
+                    })
             })
 
-        getCoords()
-            .then(coords => {
-                this.setState({
-                    coords: coords
-                })
-            })
+
+
 
     }
 
@@ -73,14 +81,14 @@ class ContractorPage extends React.Component {
             <React.Fragment >
                 <h2> Welcome to BookEm</h2>
                 <h4>This is the Contractor Page</h4>
-                <h5>Welcome {this.state.name}</h5>
+                <h5>Welcome {this.state.contractorUsername}</h5>
                 <h6>These are your pending bookings:</h6>
                 <ul>
                     {bookingsArray.map((booking) => {
                         if (booking.bookingDate > today && booking.status == "pending") {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
-                                Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
-                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
+                                Service: {booking.servicesDescription}<br></br> Client: {booking.clientUsername}<br></br>
+                                Client Address: {booking.clientAddress}, {booking.clientCity}<br></br>Client Phone Number: {booking.clientPhoneNumber}<br></br><br></br>
                                 <button name={booking.bookingId} value="confirmed" onClick={this.changeStatus}>Accept</button>
                                 <button name={booking.bookingId} value="declined" onClick={this.changeStatus}>Decline</button><hr></hr></li>
 
@@ -92,8 +100,8 @@ class ContractorPage extends React.Component {
                     {bookingsArray.map((booking) => {
                         if (booking.bookingDate > today && booking.status == "confirmed") {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
-                                Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
-                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
+                                Service: {booking.servicesDescription}<br></br> Client: {booking.clientUsername}<br></br>
+                                Client Address: {booking.clientAddress}, {booking.clientCity}<br></br>Client Phone Number: {booking.clientPhoneNumber}<br></br><br></br>
                                 <button name={booking.bookingId} onClick={this.deleteBooking}>Cancel</button><hr></hr></li>
                         }
                     })}
@@ -103,8 +111,8 @@ class ContractorPage extends React.Component {
                     {bookingsArray.map((booking) => {
                         if (booking.bookingDate < today && booking.status == "confirmed") {
                             return <li>Date: {moment(booking.bookingDate).format('dddd MMM Do YYYY')} <br></br>Booking Time: {booking.bookingTime}<br></br>
-                                Service: {booking.servicesDescription}<br></br> Client: {booking.userName}<br></br>
-                                Client Address: {booking.userAddress}, {booking.userCity}<br></br>Client Phone Number: {booking.phoneNumber}<br></br><br></br>
+                                Service: {booking.servicesDescription}<br></br> Client: {booking.clientUsername}<br></br>
+                                Client Address: {booking.clientAddress}, {booking.clientCity}<br></br>Client Phone Number: {booking.clientPhoneNumber}<br></br><br></br>
                                 <button name={booking.bookingId} >Archive</button><hr></hr></li>
                         }
                     })}

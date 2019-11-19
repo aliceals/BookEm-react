@@ -44,7 +44,7 @@ function getContractorBookings(username, db = database) {
         .where('contractor.userName', username)
         .select('bookings.clientId', 'bookingDate', 'bookingTime', 'status', 'servicesDescription', 'bookingId',
             'contractor.userName as contractorUsername', 'client.userName as clientUsername', 'client.userAddress as clientAddress',
-            'client.userCity as clientCity')
+            'client.userCity as clientCity', 'client.phoneNumber as clientPhoneNumber')
 }
 
 
