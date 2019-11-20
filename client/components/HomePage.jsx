@@ -56,11 +56,11 @@ class HomePage extends React.Component {
         return (
 
             < React.Fragment >
-                <div className="main m-3">
-                    <h1 className="title">BookEm</h1>
-                    <h4 className="hi">Hi {this.props.user.userName}</h4>
-                    <h5 className="city">From {this.props.user.userCity}</h5>
-                    <h6 className="weatherTitle">Weather for the upcoming week:</h6>
+                <div className="main m-5">
+                    <h1 className="title mb-3">BookEm</h1>
+                    <h4 className="hi mb-3">Hi {this.props.user.userName}</h4>
+                    <h5 className="city mb-3">From {this.props.user.userCity}</h5>
+                    <h6 className="weatherTitle mb-3">Weather for the upcoming week:</h6>
                     <table className="table table-bordered table-hover">
                         <thead>
                             <tr className="table-primary">

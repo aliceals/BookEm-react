@@ -16,9 +16,6 @@ class BookingsPage extends React.Component {
     }
 
 
-
-
-
     componentDidMount() {
         this.refreshData()
     }
@@ -47,8 +44,8 @@ class BookingsPage extends React.Component {
 
         return (
             <React.Fragment className="main">
-                <h3>These are your upcoming bookings</h3>
-                <ul>
+                <h3 className="bookings m-3">These are your upcoming bookings</h3>
+                <ul className="ulBook m-3">
 
                     {bookingArray.map((booking) => {
                         if (booking.bookingDate < today) {

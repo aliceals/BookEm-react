@@ -55,27 +55,29 @@ class Login extends React.Component {
         return (
 
             <React.Fragment>
-                <h2> Welcome to BookEm</h2>
-                <h3>Login</h3>
-                <form>
-                    <label>Username:
+                <div className="login">
+                    <h2> Welcome to BookEm</h2>
+                    <h3>Login</h3>
+                    <form>
+                        <label>Username:
                         <input type="text"
-                            name="username"
-                            placeholder="Name" onChange={this.handleChange} required />
-                    </label>
-                    <br></br>
-                    <label>Password:
+                                name="username"
+                                placeholder="Name" onChange={this.handleChange} required />
+                        </label>
+                        <br></br>
+                        <label>Password:
                         <input type="text"
-                            name="password"
-                            placeholder="password" onChange={this.handleChange} required />
-                    </label>
-                    <br></br>
-                    <button type="submit" onClick={this.handleSubmit}>Login</button>
+                                name="password"
+                                placeholder="password" onChange={this.handleChange} required />
+                        </label>
+                        <br></br>
+                        <button type="submit" onClick={this.handleSubmit}>Login</button>
 
-                </form>
-                <br></br>
-                <Link to="/register"><button>Register</button></Link>
-                {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : null}
+                    </form>
+                    <br></br>
+                    <Link to="/register"><button>Register</button></Link>
+                    {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : null}
+                </div>
             </React.Fragment>
         )
 

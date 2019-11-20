@@ -1,22 +1,4 @@
-/* * {
-    text-align: center;
-} */
 
-.title {
-    margin: 10px;
-}
-
-.hi {
-    margin: 10px
-}
-
-.city {
-    margin: 10px
-}
-
-.weatherTitle {
-    margin: 10px
-}
 
 .navbar {
   background-color: black;
@@ -41,7 +23,6 @@ body {
     color: red
 }
 
-#mapid { height: 180px; }
 
 .leaflet-container {
     height: 400px;
@@ -51,4 +32,17 @@ body {
 }
 
 
+.main {
+    margin-left: 10px
+}
 
+
+.login {
+    margin-top: 60px;
+    margin-left: auto;
+     margin-right: auto;
+    border-style: solid;
+  border-width: 5px;
+  width: 400px;
+  padding: 10px
+}
