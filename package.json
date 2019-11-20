@@ -6,7 +6,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon server",
-    "build": "webpack --watch",
+    "build": "webpack",
+    "build-watch": "webpack --watch",
     "test": "jest --watch --noStackTrace",
     "postinstall": "webpack && knex migrate:latest"
   },
