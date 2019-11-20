@@ -56,7 +56,7 @@ class HomePage extends React.Component {
         return (
 
             < React.Fragment >
-                <div className="main">
+                <div className="main m-3">
                     <h1 className="title">BookEm</h1>
                     <h4 className="hi">Hi {this.props.user.userName}</h4>
                     <h5 className="city">From {this.props.user.userCity}</h5>

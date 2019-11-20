@@ -71,6 +71,7 @@ class ContractorPage extends React.Component {
         let lat = this.state.coords[0].lat
         let lng = this.state.coords[0].lng
         let coordsArray = this.state.coords
+        console.log(bookingsArray)
 
         return (
 
@@ -133,24 +134,20 @@ class ContractorPage extends React.Component {
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                     />
 
-                    {console.log(coordsArray)}
 
-
-                    {coordsArray.map((location) => {
-
+                    {coordsArray.map((location, i) => {
+                        console.log(this.state.bookings)
                         return < Marker position={[location.lat, location.lng]} >
                             <Popup>
-                                THis one works
+                                <strong>Date: </strong>{this.state.bookings.length > 0 ? this.state.bookings[i].bookingDate : null}<br></br>
+                                <strong>Time: </strong>{this.state.bookings.length > 0 ? this.state.bookings[i].bookingTime : null}<br></br>
+                                <strong>Service: </strong>{this.state.bookings.length > 0 ? this.state.bookings[i].servicesDescription : null}<br></br>
+                                <strong>Status: </strong>{this.state.bookings.length > 0 ? this.state.bookings[i].status : null}
+
                             </Popup>
                         </Marker>
                     })}
 
-                    {/* < Marker position={[-41.113108, 174.9049647]} >
-                        <Popup>
-                            Lawn Mowing
-                            09:00
-                            </Popup>
-                    </Marker> */}
 
                 </LeafletMap>
             </React.Fragment >
