@@ -7,21 +7,17 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 class Map extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            coords: []
-        }
 
     }
 
     componentDidMount() {
-        this.setState({
-            coords: this.props.coords
-        })
+        console.log(this.props.coords)
     }
 
     render() {
-        console.log(this.props.coords)
-        console.log(this.state)
+
+        let firstAddress = this.props.coords
+        console.log(firstAddress)
 
 
         return (

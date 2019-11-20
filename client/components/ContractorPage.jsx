@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import { getContractorBookings, updateBooking, deleteBooking, getCoords } from '../api'
 import moment from 'moment'
 import MapPage from './Map'
-import Geocode from 'react-geocode'
+import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class ContractorPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             bookings: [],
-
+            coords: [{ lat: "", lng: "" }]
         }
 
         this.changeStatus = this.changeStatus.bind(this)
@@ -51,13 +51,10 @@ class ContractorPage extends React.Component {
                             coords: coords
                         })
                     })
+
             })
 
-
-
-
     }
-
 
     deleteBooking(e) {
         let bookingId = e.target.name
@@ -68,13 +65,11 @@ class ContractorPage extends React.Component {
     }
 
 
-
-
-
     render() {
         let bookingsArray = this.state.bookings
         let today = moment().format('YYYY-MM-DD')
-
+        let lat = this.state.coords[0].lat
+        let long = this.state.coords[0].lng
 
         return (
 
@@ -118,7 +113,32 @@ class ContractorPage extends React.Component {
                     })}
                 </ul>
                 <h5>Map of bookings:</h5>
-                <MapPage coords={this.state.coords} />
+                {/* <MapPage coords={this.state.coords} /> */}
+                <LeafletMap
+                    center={[lat, long]}
+                    //make this usercity pull from state.
+                    zoom={13}
+                    maxZoom={20}
+                    attributionControl={true}
+                    zoomControl={true}
+                    doubleClickZoom={true}
+                    scrollWheelZoom={true}
+                    dragging={true}
+                    animate={true}
+                    easeLinearity={0.35}
+                >
+
+                    <TileLayer
+                        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                    />
+                    <Marker position={[-41.1115568, 174.8891837]}>
+                        <Popup>
+                            Lawn Mowing
+                            09:00
+                        {/* {this.props.description} */}
+                        </Popup>
+                    </Marker>
+                </LeafletMap>
             </React.Fragment >
         )
 
