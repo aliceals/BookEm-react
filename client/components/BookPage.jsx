@@ -145,9 +145,9 @@ class BookPage extends React.Component {
                             <br />
                             <label>Book from: <select name="contractorId" id="contractorId" onChange={this.handleChange}>
                                 <option value="default"> -- select an option -- </option>
-                                {contractorsArray.map((contractor) => {
-                                    return <option value={contractor.contractorId}>{contractor.contractorName} -- {contractor.contractorCity} </option>
-                                })}
+                                <option value="2221"> Greater Gardens </option>
+                                <option value="2221"> Mikes Mowing </option>
+                                <option value="2221"> Greater Gardens </option>
                             </select>
                             </label>
 

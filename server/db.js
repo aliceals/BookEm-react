@@ -13,9 +13,7 @@ module.exports = {
     getUsersCity,
     getServices,
     getContractorBookings,
-    addContractor,
     updateBooking,
-    getContractors,
     getClientInfo
 }
 
