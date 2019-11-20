@@ -69,7 +69,8 @@ class ContractorPage extends React.Component {
         let bookingsArray = this.state.bookings
         let today = moment().format('YYYY-MM-DD')
         let lat = this.state.coords[0].lat
-        let long = this.state.coords[0].lng
+        let lng = this.state.coords[0].lng
+        let coordsArray = this.state.coords
 
         return (
 
@@ -115,7 +116,7 @@ class ContractorPage extends React.Component {
                 <h5>Map of bookings:</h5>
                 {/* <MapPage coords={this.state.coords} /> */}
                 <LeafletMap
-                    center={[lat, long]}
+                    center={[lat, lng]}
                     //make this usercity pull from state.
                     zoom={13}
                     maxZoom={20}
@@ -131,13 +132,26 @@ class ContractorPage extends React.Component {
                     <TileLayer
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
                     />
-                    <Marker position={[-41.1115568, 174.8891837]}>
+
+                    {console.log(coordsArray)}
+
+
+                    {coordsArray.map((location) => {
+
+                        return < Marker position={[location.lat, location.lng]} >
+                            <Popup>
+                                THis one works
+                            </Popup>
+                        </Marker>
+                    })}
+
+                    {/* < Marker position={[-41.113108, 174.9049647]} >
                         <Popup>
                             Lawn Mowing
                             09:00
-                        {/* {this.props.description} */}
-                        </Popup>
-                    </Marker>
+                            </Popup>
+                    </Marker> */}
+
                 </LeafletMap>
             </React.Fragment >
         )
