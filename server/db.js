@@ -92,9 +92,9 @@ function getServices(db = database) {
 //         .select()
 // }
 
-function addContractor(contractor, db = database) {
-    return db('contractors').insert(contractor).select()
-}
+// function addContractor(contractor, db = database) {
+//     return db('contractors').insert(contractor).select()
+// }
 
 function updateBooking(bookingId, status, db = database) {
     return db('bookings')
@@ -103,8 +103,8 @@ function updateBooking(bookingId, status, db = database) {
         .select()
 }
 
-function getContractors(db = database) {
-    return db('contractors')
-        .select()
-}
+// function getContractors(db = database) {
+//     return db('contractors')
+//         .select()
+// }
 

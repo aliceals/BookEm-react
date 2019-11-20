@@ -5,7 +5,7 @@
   "repository": "https://github.com/dev-academy-challenges/taxonomic-routing.git",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "node server",
     "build": "webpack",
     "build-watch": "webpack --watch",
     "test": "jest --watch --noStackTrace",
