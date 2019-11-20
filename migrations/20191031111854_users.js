@@ -6,7 +6,7 @@ exports.up = function (knex) {
         table.string('userAddress')
         table.string('userCity')
         table.string('email')
-        table.integer('phoneNumber')
+        table.string('phoneNumber')
         table.string('password')
         table.string('role')
     })
