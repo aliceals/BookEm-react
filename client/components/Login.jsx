@@ -75,18 +75,21 @@ class Login extends React.Component {
 
                     </form>
 
-                    <p><span>For fake user use the following details:</span>
-                        <ul>Client:<li> Username: Joe Bloggs</li>
-                            <li>Password: Pickle</li>
-                        </ul>
-                        <ul>
-                            <li>Contractor: Username: Gardens and Gardens</li>
-                            <li>Password: Gardens</li>
-                        </ul>
-                    </p>
                     <br></br>
                     {/* <Link to="/register"><button>Register</button></Link> */}
                     {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : null}
+                </div>
+                <div>
+                    <p><span>For fake user use the following details:</span>
+                        <ul>Client:
+                            <li> Username: Joe Bloggs</li>
+                            <li>Password: Pickle</li>
+                        </ul>
+                        <ul>Contractor:
+                            <li> Username: Gardens and Gardens</li>
+                            <li>Password: Gardens</li>
+                        </ul>
+                    </p>
                 </div>
             </React.Fragment >
         )
