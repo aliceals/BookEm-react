@@ -79,7 +79,7 @@ class Login extends React.Component {
                     {/* <Link to="/register"><button>Register</button></Link> */}
                     {this.state.loginIncorrect ? <p className="incorrectUser">Incorrect username or password please try again</p> : null}
                 </div>
-                <div>
+                <div className="details">
                     <p><span>For fake user use the following details:</span>
                         <ul>Client:
                             <li> Username: Joe Bloggs</li>
