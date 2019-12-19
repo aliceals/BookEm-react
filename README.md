@@ -26,4 +26,12 @@ CSS
 JavaScript 
 
 ## To do:
-Testing 
+- Testing 
+- Fix bugs
+- Styling
+
+## Features:
+- Ability to log in as either a client or a contractor
+- External weather API shows the upcoming weather for the week to help with bookings
+- Login and register feature
+- Ability to see pending, upcoming and past bookings 
