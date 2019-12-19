@@ -10,8 +10,8 @@ learnt React and then I moved the project over to React
 
 A goal of mine during this project was to learn how to
 do authorisation and logins. I completed this by
-Following an online tutorial of sessions and gaining
-an understanding of how it works.
+following an online tutorial of sessions and gaining
+an understanding of how it works. 
 
 
 ## Tech Stack:
@@ -25,5 +25,5 @@ HTML
 CSS
 JavaScript 
 
-To do:
+## To do:
 Testing 
