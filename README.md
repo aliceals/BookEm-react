@@ -1,4 +1,4 @@
-BookEm
+# BookEm
 
 This was my personal project for Dev Academy
 
@@ -14,7 +14,7 @@ Following an online tutorial of sessions and gaining
 an understanding of how it works.
 
 
-Stack:
+## Tech Stack:
 React
 APIs - external and internal 
 NodeJS
