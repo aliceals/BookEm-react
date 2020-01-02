@@ -26,7 +26,7 @@ CSS
 JavaScript 
 
 ## To do:
-- Testing 
+- Testing - cypress and unit
 - Fix bugs
 - Styling
 
