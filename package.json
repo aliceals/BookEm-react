@@ -5,10 +5,11 @@
   "repository": "https://github.com/dev-academy-challenges/taxonomic-routing.git",
   "main": "server/index.js",
   "scripts": {
+    "client": "webpack-dev-server --hot --inline",
+    "dev": "nodemon & webpack --watch",
+    "server": "node server",
     "start": "node server",
-    "build": "webpack",
-    "build-watch": "webpack --watch",
-    "test": "jest --watch --noStackTrace",
+    "test": "jest --watchAll",
     "postinstall": "webpack && knex migrate:latest"
   },
   "babel": {
@@ -28,7 +29,9 @@
   },
   "author": "EDA",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "cypress": "^3.8.1"
+  },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",
