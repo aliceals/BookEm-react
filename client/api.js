@@ -34,7 +34,7 @@ export function getBookings() {
 export function deleteBooking(id) {
     let newid = { bookingId: id }
     return request
-        .delete(`/bookings/`)
+        .delete(`/bookings`)
         .send(newid)
         .then(response => response.body)
 }

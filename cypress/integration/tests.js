@@ -79,7 +79,7 @@ it('A user can log in as a contractor to a different view and accept booking', f
 
     cy.get('.password')
         .type('Gardens')
-        .should('have.value', 'Gardens')git
+        .should('have.value', 'Gardens')
 
     cy.contains('Login!').click()
 
