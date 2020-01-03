@@ -153,7 +153,7 @@ class BookPage extends React.Component {
 
                             <br />
 
-                            <button type="submit" value={this.state} onClick={this.handleSubmit} >Book</button>
+                            <button type="submit" value={this.state} onClick={this.handleSubmit} >Book!!</button>
                         </form>
                         {this.state.redirectToBookings ? <Redirect to="/bookings" /> : null}
 

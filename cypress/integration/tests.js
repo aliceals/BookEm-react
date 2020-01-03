@@ -38,6 +38,8 @@ it('A user can book a day', function () {
 
     cy.get('.company').select('Mikes Mowing')
 
+    cy.contains('Book!!').click()
+
 })
 
 // it('A user can complete a booking', function () {
