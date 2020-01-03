@@ -28,9 +28,9 @@ it('A user can book a day', function () {
 
     cy.contains('BookEm')
 
-    cy.get('.book').click({ multiple: true })
+    cy.get('.book').click({ multiple: false })
 
-    cy.get('.company').select('Greater Gardens)
+    cy.get('.company').select('Greater Gardens')
 
 })
 
