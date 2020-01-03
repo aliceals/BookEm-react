@@ -1,9 +1,7 @@
 import React from 'react'
 import { getBookings, deleteBooking } from '../api'
 import moment from 'moment'
-import Cookies from 'universal-cookie'
 
-const cookies = new Cookies()
 
 class BookingsPage extends React.Component {
     constructor(props) {
