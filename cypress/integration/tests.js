@@ -67,16 +67,8 @@ it('A user can delete a booking', function () {
 
 })
 
-// it('A user can confirm a booking', function () {
-//     logUserIn()
 
-//     cy.contains('BookEm')
-
-//     cy.contains('.book').click()
-
-// })
-
-it('A user can log in as a contractor to a different view', function () {
+it('A user can log in as a contractor to a different view and accept booking', function () {
     cy.visit('https://book-em.herokuapp.com/#/login')
 
     cy.get('.username')
@@ -91,5 +83,6 @@ it('A user can log in as a contractor to a different view', function () {
 
     cy.contains('This is the Contractor Page')
 
+    cy.contains('Accept').click()
 
 })
