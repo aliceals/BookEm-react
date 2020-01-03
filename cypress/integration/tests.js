@@ -28,7 +28,9 @@ it('A user can book a day', function () {
 
     cy.contains('BookEm')
 
-    cy.get('.book').click({ multiple: false })
+    cy.contains('book!').click({ multiple: false })
+
+    cy.contains('date').type('1999-12-31')
 
     cy.get('.company').select('Greater Gardens')
 

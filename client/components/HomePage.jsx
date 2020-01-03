@@ -76,7 +76,7 @@ class HomePage extends React.Component {
                             </tr>
                             <tr className="table-primary">
                                 {daysArray.map((days, i) => {
-                                    return <td key={i}><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')} class="book">Book</button></td>
+                                    return <td key={i}><button onClick={this.changePendingBooking} value={days.date.format('YYYY-MM-DD')} class="book">Book!</button></td>
                                 })}
                             </tr>
                         </tbody>
