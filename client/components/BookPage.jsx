@@ -143,7 +143,7 @@ class BookPage extends React.Component {
                             </select>
                             </label>
                             <br />
-                            <label>Book from: <select name="contractorId" id="contractorId" onChange={this.handleChange}>
+                            <label>Book from: <select name="contractorId" id="contractorId" className="company" onChange={this.handleChange}>
                                 <option value="default"> -- select an option -- </option>
                                 <option value="2221"> Greater Gardens </option>
                                 <option value="2221"> Mikes Mowing </option>

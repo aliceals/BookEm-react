@@ -28,79 +28,55 @@ it('A user can book a day', function () {
 
     cy.contains('BookEm')
 
-    cy.contains('.book').click()
+    cy.get('.book').click({ multiple: true })
+
+    cy.get('.company').select('Greater Gardens)
 
 })
 
-// it('A user can create a new group and delete a new group', function () {
+// it('A user can complete a booking', function () {
 //     logUserIn()
 
-//     cy.get('.groupname')
-//         .type('test group')
-//         .should('have.value', 'test group')
+//     cy.contains('BookEm')
 
-//     cy.get('.groupdescription')
-//         .type('banana')
-//         .should('have.value', 'banana')
-
-//     cy.get('.groupmember')
-//         .type('banana')
-//         .should('have.value', 'banana')
-
-//     cy.contains('Add member').click()
-
-//     cy.get('.groupmember')
-//         .type('pickle')
-//         .should('have.value', 'pickle')
-
-//     cy.contains('Add member').click()
-
-//     cy.contains('Create Group').click()
-
-//     cy.contains('Add New Transaction')
-
-//     cy.contains('Delete').click()
-
+//     cy.contains('.book').click()
 
 // })
 
-// it('A user can create a transaction from already created group', function () {
+
+// it('A user can view upcoming bookings', function () {
 //     logUserIn()
 
-//     cy.contains('test group').click()
+//     cy.contains('BookEm')
 
-//     cy.contains('Add New Transaction').click()
+//     cy.contains('.book').click()
 
-//     cy.get('.paymentDesc')
-//         .type('test one')
-//         .should('have.value', 'test one')
-
-//     cy.get('.payedby')
-//         .select('banana')
-//         .should('have.value', '42')
-
-//     cy.get('.amount')
-//         .type('20.00')
-//         .should('have.value', '20.00')
-
-//     cy.contains('Add Transaction').click()
-
-//     cy.contains('View All Transactions').click()
-
-//     cy.contains('test one')
 // })
 
 
-// it('A user can delete a transaction and it adds up to the right amount', function () {
+// it('A user can delete a booking', function () {
 //     logUserIn()
 
-//     cy.contains('test group').click()
+//     cy.contains('BookEm')
 
-//     cy.contains('View All Transactions').click()
+//     cy.contains('.book').click()
 
-//     cy.contains('Delete!').click()
+// })
 
-//     cy.contains('Yes, delete it!').click()
+// it('A user can confirm a booking', function () {
+//     logUserIn()
 
-//     cy.contains('Total spend is $420')
+//     cy.contains('BookEm')
+
+//     cy.contains('.book').click()
+
+// })
+
+// it('A user can log in as a contractor to a different view', function () {
+//     logUserIn()
+
+//     cy.contains('BookEm')
+
+//     cy.contains('.book').click()
+
 // })
