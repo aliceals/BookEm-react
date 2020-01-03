@@ -2,10 +2,6 @@ import React from 'react'
 import Book from './BookPage'
 import moment from 'moment'
 import { getWeather } from '../api'
-import Cookies from 'universal-cookie'
-
-const cookies = new Cookies()
-
 
 class HomePage extends React.Component {
     constructor(props) {

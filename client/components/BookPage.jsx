@@ -2,10 +2,6 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { addBooking, getServiceList, getContractors } from '../api'
 import { Modal, Button } from 'react-bootstrap'
-import Cookies from 'universal-cookie'
-
-const cookies = new Cookies()
-
 
 class BookPage extends React.Component {
     constructor(props) {

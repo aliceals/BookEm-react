@@ -2,7 +2,6 @@ import request from 'superagent'
 
 
 
-
 export function addBooking(booking) {
     let status = booking.status
     let job_id = booking.form.job_id

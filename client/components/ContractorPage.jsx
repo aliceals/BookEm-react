@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { getContractorBookings, updateBooking, deleteBooking, getCoords } from '../api'
 import moment from 'moment'
-import MapPage from './Map'
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 class ContractorPage extends React.Component {
