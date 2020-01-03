@@ -57,7 +57,6 @@ class ContractorPage extends React.Component {
     }
 
     deleteBooking(e) {
-        console.log(e.target.name)
         let bookingId = e.target.name
         deleteBooking(bookingId)
             .then(() => {
@@ -134,7 +133,6 @@ class ContractorPage extends React.Component {
                         />
 
                         {coordsArray.map((location, i) => {
-                            console.log(this.state.bookings)
                             return < Marker position={[location.lat, location.lng]} >
                                 <Popup>
                                     <strong>Date: </strong>{this.state.bookings.length > 0 ? this.state.bookings[i].bookingDate : null}<br></br>

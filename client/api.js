@@ -66,7 +66,6 @@ export function addContractor(contractor) {
 }
 
 export function updateBooking(booking, status) {
-    console.log("booking", booking)
     return request.put('/bookings')
         .send({ booking: booking, status: status })
         .then(response => response.body)

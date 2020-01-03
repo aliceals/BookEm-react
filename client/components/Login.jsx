@@ -40,11 +40,9 @@ class Login extends React.Component {
                     let user = JSON.parse(res)
                     let userRole = user.role
                     if (userRole == 'client') {
-                        console.log("client")
                         window.location.href = "/"
                     }
                     else if (userRole == 'contractor') {
-                        console.log("client")
                         window.location.href = '/#/contractor'
                     }
                 }

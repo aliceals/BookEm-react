@@ -27,9 +27,6 @@ class App extends React.Component {
   componentDidMount() {
     if (!cookies.get('appsession')) {
       window.location.href = "/#/login"
-    } else {
-      console.log("im in here")
-
     }
 
     if (cookies.get('appsession')) {

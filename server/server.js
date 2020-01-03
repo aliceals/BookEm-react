@@ -104,7 +104,6 @@ server.post('/register', (req, res) => {
 
 server.post('/contractorregister', (req, res) => {
     let contractor = req.body
-    console.log(contractor)
     db.addContractor(contractor)
         .then(() => {
             res.sendStatus(204)
@@ -139,7 +138,6 @@ server.post('/login', (req, res) => {
 
     db.getUser(username)
         .then(username => {
-            console.log("TCL: username", username)
             if (!username) {
                 console.log("no user with this username")
                 res.send("404")

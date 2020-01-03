@@ -40,36 +40,32 @@ it('A user can book a day', function () {
 
     cy.contains('Book!!').click()
 
+    cy.contains('upcoming')
+
 })
 
-// it('A user can complete a booking', function () {
-//     logUserIn()
-
-//     cy.contains('BookEm')
-
-//     cy.contains('.book').click()
-
-// })
 
 
-// it('A user can view upcoming bookings', function () {
-//     logUserIn()
+it('A user can view upcoming bookings', function () {
+    logUserIn()
 
-//     cy.contains('BookEm')
+    cy.contains('BookEm')
 
-//     cy.contains('.book').click()
+    cy.contains('Upcoming').click()
 
-// })
+    cy.contains('These are your')
+
+})
 
 
-// it('A user can delete a booking', function () {
-//     logUserIn()
+it('A user can delete a booking', function () {
+    logUserIn()
 
-//     cy.contains('BookEm')
+    cy.contains('Upcoming').click()
 
-//     cy.contains('.book').click()
+    cy.contains('Cancel').click()
 
-// })
+})
 
 // it('A user can confirm a booking', function () {
 //     logUserIn()
@@ -80,11 +76,20 @@ it('A user can book a day', function () {
 
 // })
 
-// it('A user can log in as a contractor to a different view', function () {
-//     logUserIn()
+it('A user can log in as a contractor to a different view', function () {
+    cy.visit('https://book-em.herokuapp.com/#/login')
 
-//     cy.contains('BookEm')
+    cy.get('.username')
+        .type('Gardens and Gardens')
+        .should('have.value', 'Gardens and Gardens')
 
-//     cy.contains('.book').click()
+    cy.get('.password')
+        .type('Gardens')
+        .should('have.value', 'Gardens')
 
-// })
+    cy.contains('Login!').click()
+
+    cy.contains('This is the Contractor Page')
+
+
+})
