@@ -28,11 +28,15 @@ it('A user can book a day', function () {
 
     cy.contains('BookEm')
 
-    cy.contains('book!').click({ multiple: false })
+    cy.contains('Book!').click()
 
-    cy.contains('date').type('1999-12-31')
+    cy.contains('Date').type('1999-12-31')
 
-    cy.get('.company').select('Greater Gardens')
+    cy.contains('Time').type('11:00')
+
+    cy.get('.jobType').select('Lawn mowing $40')
+
+    cy.get('.company').select('Mikes Mowing')
 
 })
 

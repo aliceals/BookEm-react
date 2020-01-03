@@ -135,7 +135,7 @@ class BookPage extends React.Component {
                         <input type="time" name="bookingTime" onChange={this.handleChange} required />
                             </label>
                             <br />
-                            <label>Book: <select name="job_id" id="jobId" onChange={this.handleChange}>
+                            <label>Book: <select name="job_id" id="jobId" className="jobType" onChange={this.handleChange}>
                                 <option value="default"> -- select an option -- </option>
                                 {servicesArray.map((service) => {
                                     return <option value={service.servicesId}>{service.servicesDescription} {service.servicesFee}</option>
