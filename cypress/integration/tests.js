@@ -1,8 +1,4 @@
-describe('My First Test', function () {
-    it('Test that it works', function () {
-        expect(true).to.equal(true)
-    })
-})
+
 
 it('A user can visit the page', function () {
     cy.visit('https://book-em.herokuapp.com/#/login')
@@ -23,10 +19,16 @@ function logUserIn() {
 
     cy.contains('Login!').click()
 
+    cy.contains('Hi Joe Bloggs')
+
 }
 
-it('A user can ', function () {
+it('A user can book a day', function () {
     logUserIn()
+
+    cy.contains('BookEm')
+
+    cy.contains('.book').click()
 
 })
 
