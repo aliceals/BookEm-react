@@ -65,6 +65,8 @@ it('A user can delete a booking', function () {
 
     cy.contains('Cancel').click()
 
+    cy.contains('21 Samwell').should('not.exist')
+
 })
 
 
@@ -84,5 +86,7 @@ it('A user can log in as a contractor to a different view and accept booking', f
     cy.contains('This is the Contractor Page')
 
     cy.contains('Accept').click()
+
+    cy.contains('Joe Bloggs').contains('Archive')
 
 })
