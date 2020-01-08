@@ -58,7 +58,7 @@ class App extends React.Component {
                 {this.state.user} />} />
               <Route exact path="/bookings" render={(props) => <BookingsPage {...props} user=
                 {this.state.user} />} />
-              <a class="github-fork-ribbon" href="https://github.com/aliceals/Fizzbuzz-extreme" data-ribbon="View code on GitHub" title="View code on GitHub">View code on GitHub</a>
+              <a class="github-fork-ribbon" href="https://github.com/aliceals/BookEm-react" data-ribbon="View code on GitHub" title="View code on GitHub">View code on GitHub</a>
 
             </>
 
