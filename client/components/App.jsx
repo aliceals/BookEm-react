@@ -44,10 +44,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <React.Fragment>
-
+        <>
           {this.state.user.role == "client" ?
-            <React.Fragment >
+            <>
               <Route path="/" component={NavBar} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
@@ -59,17 +58,19 @@ class App extends React.Component {
                 {this.state.user} />} />
               <Route exact path="/bookings" render={(props) => <BookingsPage {...props} user=
                 {this.state.user} />} />
-            </React.Fragment>
+              <a class="github-fork-ribbon" href="https://github.com/aliceals/Fizzbuzz-extreme" data-ribbon="View code on GitHub" title="View code on GitHub">View code on GitHub</a>
 
-            : <React.Fragment>
+            </>
+
+            : <>
               <Route path="/" component={NavBar} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
               <Route path="/logout" component={Logout} />
               <Route path="/contractor" render={(props) => <ContractorPage {...props} user=
                 {this.state.user} />} />
-            </React.Fragment>}
-        </React.Fragment>
+            </>}
+        </>
 
       </Router>
     )
@@ -79,4 +80,4 @@ class App extends React.Component {
 
 export default App
 
-// { this.state.user.role == "client" : ? null}
+// {this.state.user.role == "client" : ? null}
